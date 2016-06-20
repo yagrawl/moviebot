@@ -26,7 +26,7 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        if (event.message.text) {
+        if (event.message.text && event.message) {
         	switch(event.message.text) {
         	
         		case "Hi":
@@ -65,7 +65,7 @@ app.post('/webhook', function (req, res) {
         	}
     	}	
     }
-    else if(event.message.postback){
+    else if(event.postback){
     	receivedPostback(event.message);
     }
     res.sendStatus(200);
