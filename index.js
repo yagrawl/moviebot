@@ -54,7 +54,11 @@ app.post('/webhook', function (req, res) {
         		case "Suggest some more movies":
         			multipleMovies(event.sender.id, event.message.text);
         			break;
-        			
+
+        		case "More Movies":
+        			moreMovies(event.sender.id, event.message.text);
+        			break;
+
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, didn't get that!"});
         	
@@ -82,6 +86,84 @@ function sendMessage(recipientId, message) {
         }
     });
 };
+
+function moreMovies(recipientId, text){
+	var imageUrl1 = "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg";
+	var imageUrl2 = "https://www.movieposter.com/posters/archive/main/4/MPW-2244";
+	var imageUrl3 = "http://cdn.mos.cms.futurecdn.net/8e5f9fab8d96968fc28267a4ed4a6707-650-80.jpg";
+	var imageUrl4 = "http://pixartimes.com/wp-content/uploads/2015/03/Inside-Out-Official-Poster.jpg";
+	var movieUrl1 = "http://www.imdb.com/title/tt0081505/";
+	var movieUrl2 = "http://www.imdb.com/title/tt0137523/"; 
+	var movieUrl3 = "http://www.imdb.com/title/tt1645170/";
+	var movieUrl4 = "http://www.imdb.com/title/tt0758758/";
+	message = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": "The Shining",
+                            "subtitle": "Horror",
+                            "image_url": imageUrl1 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl1,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        },
+                        {
+                            "title": "Fight Club",
+                            "subtitle": "Thriller",
+                            "image_url": imageUrl2 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl2,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        },{
+                            "title": "The Dictator",
+                            "subtitle": "Comedy",
+                            "image_url": imageUrl3 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl3,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        },
+                        {
+                            "title": "Inside Out",
+                            "subtitle": "Animated",
+                            "image_url": imageUrl4 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl4,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        }]
+                    }
+                }
+            };
+    
+            sendMessage(recipientId, message);
+
+};
+
 
 function multipleMovies(recipientId, text){
 	var imageUrl1 = "http://imgc.allpostersimages.com/images/P-473-488-90/71/7105/HXVV100Z/posters/the-hunt-jagten-movie-poster.jpg";
@@ -113,7 +195,7 @@ function multipleMovies(recipientId, text){
                         },
                         {
                             "title": "The Big Short",
-                            "subtitle": "Thriller",
+                            "subtitle": "Drama",
                             "image_url": imageUrl2 ,
                             "buttons": [{
                                 "type": "web_url",
@@ -125,8 +207,8 @@ function multipleMovies(recipientId, text){
                                 "payload": "More Movies",
                             }]
                         },{
-                            "title": "The Founder",
-                            "subtitle": "Biography",
+                            "title": "About Time",
+                            "subtitle": "Romance",
                             "image_url": imageUrl3 ,
                             "buttons": [{
                                 "type": "web_url",
