@@ -40,7 +40,14 @@ app.post('/webhook', function (req, res) {
         		case "Thank you":
         			sendMessage(event.sender.id, {text: "You are very welcome!"});
         			break;
-        		
+
+                case "exit":
+                case "bye":
+                case "Exit":
+                case "quit":
+                    sendMessage(event.sender.id, {text: "Goodbye! Have a nice day!"});
+                    break;    
+                        		
         		case "Suggest A Movie":
         		case "Suggest a movie":
         			suggestAMovie(event.sender.id, event.message.text);
