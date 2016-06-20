@@ -26,7 +26,7 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        if (event.message && event.message.text) {
+        if (event.message.text) {
         	switch(event.message.text) {
         	
         		case "Hi":
@@ -65,6 +65,9 @@ app.post('/webhook', function (req, res) {
         	}
     	}	
     }
+    else if(event.message.postback){
+    	receivedPostback(event.message);
+    }
     res.sendStatus(200);
 });
 
@@ -85,6 +88,14 @@ function sendMessage(recipientId, message) {
             console.log('Error: ', response.body.error);
         }
     });
+};
+
+function receivedPostback(event){
+	var senderId = event.sender.id;
+  	var recipientId = event.recipient.id;
+  	var payload = event.postback.payload;
+
+  	sendMessage(recipientId, {text: "postback activated"});
 };
 
 function moreMovies(recipientId, text){
