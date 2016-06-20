@@ -65,9 +65,6 @@ app.post('/webhook', function (req, res) {
         	}
     	}	
     }
-    else if(event.postback){
-    	receivedPostback(event.message);
-    }
     res.sendStatus(200);
 });
 
@@ -90,13 +87,6 @@ function sendMessage(recipientId, message) {
     });
 };
 
-function receivedPostback(event){
-	var senderId = event.sender.id;
-  	var recipientId = event.recipient.id;
-  	var payload = event.postback.payload;
-
-  	sendMessage(recipientId, {text: "postback activated"});
-};
 
 function moreMovies(recipientId, text){
 	var imageUrl1 = "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg";
