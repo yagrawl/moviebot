@@ -26,7 +26,7 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        if (event.message.text && event.message) {
+        if (event.message && event.message.text) {
         	switch(event.message.text) {
         	
         		case "Hi":
@@ -87,7 +87,6 @@ function sendMessage(recipientId, message) {
     });
 };
 
-
 function moreMovies(recipientId, text){
 	var imageUrl1 = "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg";
 	var imageUrl2 = "https://www.movieposter.com/posters/archive/main/4/MPW-2244";
@@ -96,7 +95,7 @@ function moreMovies(recipientId, text){
 	var movieUrl1 = "http://www.imdb.com/title/tt0081505/";
 	var movieUrl2 = "http://www.imdb.com/title/tt0137523/"; 
 	var movieUrl3 = "http://www.imdb.com/title/tt1645170/";
-	var movieUrl4 = "http://www.imdb.com/title/tt2096673/";
+	var movieUrl4 = "http://www.imdb.com/title/tt0758758/";
 	message = {
                 "attachment": {
                     "type": "template",
