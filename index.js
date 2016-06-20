@@ -26,15 +26,14 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        var message = event.message.text; 
         if (event.message && event.message.text) {
         	switch(event.message.text) {
         	
-        		case event.message.text = "Hi":
+        		case event.message.text == "Hi":
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-        		case event.message.text = "Thanks":
+        		case event.message.text == "Thanks":
         			sendMessage(event.sender.id, {text: "You are very welcome!"});
         			break;
         	
