@@ -46,6 +46,15 @@ app.post('/webhook', function (req, res) {
         			suggestAMovie(event.sender.id, event.message.text);
         			break;
 
+        		case "Suggest Another":
+        		case "Suggest another":
+        			suggestAnother(event.sender.id, event.message.text);
+        			break;
+
+        		case "Suggest some more movies":
+        			multipleMovies(event.sender.id, event.message.text);
+        			break;
+        			
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, didn't get that!"});
         	
@@ -74,8 +83,85 @@ function sendMessage(recipientId, message) {
     });
 };
 
+function multipleMovies(recipientId, text){
+	var imageUrl1 = "http://imgc.allpostersimages.com/images/P-473-488-90/71/7105/HXVV100Z/posters/the-hunt-jagten-movie-poster.jpg";
+	var imageUrl2 = "http://cdn3-www.comingsoon.net/assets/uploads/gallery/the-big-short/tbs_1-sht_teaser.jpg";
+	var imageUrl3 = "http://www.impawards.com/intl/uk/2013/posters/about_time.jpg";
+	var imageUrl4 = "https://upload.wikimedia.org/wikipedia/en/8/8a/Into-the-wild.jpg";
+	var movieUrl1 = "http://www.imdb.com/title/tt2106476/";
+	var movieUrl2 = "http://www.imdb.com/title/tt1596363/"; 
+	var movieUrl3 = "http://www.imdb.com/title/tt2194499/";
+	var movieUrl4 = "http://www.imdb.com/title/tt0758758/";
+	message = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": "Jagten",
+                            "subtitle": "Drama",
+                            "image_url": imageUrl1 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl1,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        },
+                        {
+                            "title": "The Big Short",
+                            "subtitle": "Thriller",
+                            "image_url": imageUrl2 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl2,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        },{
+                            "title": "The Founder",
+                            "subtitle": "Biography",
+                            "image_url": imageUrl3 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl3,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        },
+                        {
+                            "title": "Into The Wild",
+                            "subtitle": "Drama",
+                            "image_url": imageUrl4 ,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": movieUrl4,
+                                "title": "IMDB"
+                                }, {
+                                "type": "postback",
+                                "title": "More Movies",
+                                "payload": "More Movies",
+                            }]
+                        }]
+                    }
+                }
+            };
+    
+            sendMessage(recipientId, message);
+
+};
+
 function suggestAMovie(recipientId, text){
-    var imageUrl3 = "http://cdn1-www.comingsoon.net/assets/uploads/gallery/the-founder/cezgbkauyaa20xx.jpg";
+    var imageUrl = "http://cdn1-www.comingsoon.net/assets/uploads/gallery/the-founder/cezgbkauyaa20xx.jpg";
     var movieURL = "http://www.imdb.com/title/tt4276820/";
     message = {
         "attachment": {
@@ -85,7 +171,36 @@ function suggestAMovie(recipientId, text){
             	"elements": [{
               		"title": "The Founder",
                 	"subtitle": "Biography",
-                	"image_url": imageUrl3 ,
+                	"image_url": imageUrl ,
+                	"buttons": [{
+                    	"type": "web_url",
+                    	"url": movieURL,
+                    	"title": "IMDB"
+                		},{
+                    	"type": "postback",
+                    	"title": "Suggest Another",
+                    	"payload": "Suggest Another",
+                	}]
+            	}]
+        	}
+       	}
+    };
+            
+    sendMessage(recipientId, message);
+};
+
+function suggestAnother(recipientId, text){
+    var imageUrl = "http://www.impawards.com/2010/posters/inception_ver3.jpg";
+    var movieURL = "http://www.imdb.com/title/tt1375666/";
+    message = {
+        "attachment": {
+        "type": "template",
+        	"payload": {
+            	"template_type": "generic",
+            	"elements": [{
+              		"title": "Inception",
+                	"subtitle": "Thriller",
+                	"image_url": imageUrl ,
                 	"buttons": [{
                     	"type": "web_url",
                     	"url": movieURL,
