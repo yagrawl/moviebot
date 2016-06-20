@@ -29,6 +29,21 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
+        switch(event.message.text) {
+        	
+        	case 0:
+        		event.message.text == "Hi";
+        		sendMessage(event.sender.id, {text: "Hello!"});
+        		break;
+
+        	case 1:
+        		event.message.text == "Thanks";
+        		sendMessage(event.sender.id, {text: "You are very welcome!"});
+        		break;
+        	
+        	default:
+        		sendMessage(event.sender.id, {text: "Sorry, didn't get that!"});
+        }
     }
     res.sendStatus(200);
 });
