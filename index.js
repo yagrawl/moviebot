@@ -75,34 +75,30 @@ function sendMessage(recipientId, message) {
 };
 
 function suggestAMovie(recipientId, text){
-    text = text || "";
-    if (text === 'Suggest Another' || text === 'Suggest another') {
-        var imageUrl3 = "http://cdn1-www.comingsoon.net/assets/uploads/gallery/the-founder/cezgbkauyaa20xx.jpg";
-        var movieURL = "http://www.imdb.com/title/tt4276820/";
-        message = {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            "title": "The Founder",
-                            "subtitle": "Biography",
-                            "image_url": imageUrl3 ,
-                            "buttons": [{
-                                "type": "web_url",
-                                "url": movieURL,
-                                "title": "IMDB"
-                                }, {
-                                "type": "postback",
-                                "title": "Suggest Another",
-                                "payload": "Suggest Another",
-                            }]
-                        }]
-                    }
-                }
-            };
+    var imageUrl3 = "http://cdn1-www.comingsoon.net/assets/uploads/gallery/the-founder/cezgbkauyaa20xx.jpg";
+    var movieURL = "http://www.imdb.com/title/tt4276820/";
+    message = {
+        "attachment": {
+        "type": "template",
+        	"payload": {
+            	"template_type": "generic",
+            	"elements": [{
+              		"title": "The Founder",
+                	"subtitle": "Biography",
+                	"image_url": imageUrl3 ,
+                	"buttons": [{
+                    	"type": "web_url",
+                    	"url": movieURL,
+                    	"title": "IMDB"
+                		},{
+                    	"type": "postback",
+                    	"title": "Suggest Another",
+                    	"payload": "Suggest Another",
+                	}]
+            	}]
+        	}
+       	}
+    };
             
-            sendMessage(recipientId, message);
-    }
-
+    sendMessage(recipientId, message);
 };
