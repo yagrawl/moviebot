@@ -26,21 +26,23 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        switch(event.message.text) {
+        if (event.message && event.message.text) {
+        	switch(event.message.text) {
         	
-        	case 0:
-        		event.message.text = "Hi";
-        		sendMessage(event.sender.id, {text: "Hello!"});
-        		break;
+        		case 0:
+        			event.message.text = "Hi";
+        			sendMessage(event.sender.id, {text: "Hello!"});
+        			break;
 
-        	case 1:
-        		event.message.text = "Thanks";
-        		sendMessage(event.sender.id, {text: "You are very welcome!"});
-        		break;
+        		case 1:
+        			event.message.text = "Thanks";
+        			sendMessage(event.sender.id, {text: "You are very welcome!"});
+        			break;
         	
-        	default:
-        		sendMessage(event.sender.id, {text: "Sorry, didn't get that!"});
-        }
+        		default:
+        			sendMessage(event.sender.id, {text: "Sorry, didn't get that!"});
+        	}
+    	}
     }
     res.sendStatus(200);
 });
