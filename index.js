@@ -29,11 +29,11 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
         	switch(event.message.text) {
         	
-        		case "Hi":
+        		case "Hi" || "hi" || "hey":
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-        		case "Thanks":
+        		case "Thanks" || "Thank You":
         			sendMessage(event.sender.id, {text: "You are very welcome!"});
         			break;
         	
