@@ -159,6 +159,8 @@ function sendImage(recipientId, message) {
             "attachment": {
                 "type": "image",
                 "payload": {
+                    "url": imageR[Math.floor((Math.random() * 50) + 1)],
+                    "url": imageR[Math.floor((Math.random() * 50) + 1)],
                     "url": imageR[Math.floor((Math.random() * 50) + 1)]
                 } 
             }
