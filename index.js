@@ -107,8 +107,9 @@ app.post('/webhook', function (req, res) {
                     break;
 
         		default:
-        			sendMessage(event.sender.id, {text: "Sorry, didn't get that!"});
-        	
+        			sendMessage(event.sender.id, {text: "Sorry, don't get what "+ event.message.text + " means!"});
+                    sendImage(event.sender.id, event.message.text);
+        	        sendMessage(event.sender.id, {text: "For your troubles! :)"});
         	}
     	}	
     }
