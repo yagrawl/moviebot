@@ -122,6 +122,7 @@ app.post('/webhook', function (req, res) {
         			break;
 
                 case "Random poster":
+                     "Random":
                     sendImage(event.sender.id, event.message.text);
                     break;
 
