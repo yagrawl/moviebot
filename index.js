@@ -67,7 +67,7 @@ app.post('/webhook', function (req, res) {
                 case "bye":
                 case "Exit":
                 case "quit":
-                    setTimeout(sendMessage(event.sender.id, {text: "Goodbye! Have a nice day!"}), 2000);
+                    setTimeout(sendMessage(event.sender.id, {text: "Goodbye! Have a nice day!"}), 5000);
                     break;    
                         		
         		case "Suggest A Movie":
