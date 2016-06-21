@@ -55,7 +55,20 @@ var imageR = [  "http://www.impawards.com/2014/posters/other_woman_ver2_xlg.jpg"
                 "http://1.bp.blogspot.com/-RUpux6to0lk/UXj0FUsDrDI/AAAAAAAAAfg/Up0RTt1fGzg/s1600/Red-hot-Esha-Gupta-displays-her-ethnic-side-in-Jannat-2-Movie.jpg"
             ];
 
+var gifR = [ "http://66.media.tumblr.com/5eeb15b82ba067cdff33d27b772c9cfb/tumblr_nf7beslJCY1tofduqo1_500.gif",
+             "http://25.media.tumblr.com/972faa2f97aa452e40dacb0520b1d2c6/tumblr_mvpqdoWGMk1qkzl7oo1_500.gif",
+             "https://media.giphy.com/media/HV0xXL748N64U/giphy.gif",
+             "http://49.media.tumblr.com/tumblr_lrtp6nB4UR1qlhwa6o1_500.gif",
+             "http://cdn.rsvlts.com/wp-content/uploads/2015/01/Hot-Tubs-Are-Better-In-GIF-Form-010.gif",
+             "http://cdn.rsvlts.com/wp-content/uploads/2013/04/Megan-Fox-GIF-09.gif",
+             "https://media.giphy.com/media/2f4Sp5JKzn5XG/giphy.gif",
+             "https://chatroomconvocom.files.wordpress.com/2016/04/celebvid-29.gif",
+             "http://img.izismile.com/img/img8/20150221/1000/kelly_brooks_sexy_gifs_16.gif",
+             "http://x.imagefapusercontent.com/u/celebloops/4135022/495702202/tumblr_mmz5atbsJM1rzt0e7o3_400.gif",
+             "http://66.media.tumblr.com/ad7b5982e223e99ff943ae253fef1ed1/tumblr_mn2r0efyOy1rfdvpto1_400.gif",
+             "http://www.radass.com/wp-content/uploads/2015/10/Natasha-Henstridge-06.gif"
 
+            ];
 // handler receiving messages
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
@@ -106,6 +119,11 @@ app.post('/webhook', function (req, res) {
                     sendImage(event.sender.id, event.message.text);
                     break;
 
+                case "Gif":
+                case "gif":
+                    sendGif(event.sender.id, event.message.text);
+                    break;
+
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, don't get what "+ event.message.text + " means!"});
                     sendImage(event.sender.id, event.message.text);
@@ -149,6 +167,18 @@ function sendImage(recipientId, message) {
         };
         sendMessage(recipientId, message);
     }
+};
+
+function sendGif(recipientId, message) {
+        message = {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": gifR[Math.floor((Math.random() * 10) + 1)]
+                } 
+            }
+        };
+        sendMessage(recipientId, message);
 };
 
 function moreMovies(recipientId, text){
