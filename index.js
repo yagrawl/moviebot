@@ -156,6 +156,8 @@ function sendMessage(recipientId, message) {
 
 
 function sendImage(recipientId, message) {
+    for(var i = 0; i < 5; i++)
+    {
         message = {
             "attachment": {
                 "type": "image",
@@ -165,16 +167,7 @@ function sendImage(recipientId, message) {
             }
         };
         sendMessage(recipientId, message);
-
-        message = {
-            "attachment": {
-                "type": "image",
-                "payload": {
-                    "url": imageR[Math.floor((Math.random() * 50) + 1)]
-                } 
-            }
-        };
-        sendMessage(recipientId, message);
+    }
 };
 
 function moreMovies(recipientId, text){
