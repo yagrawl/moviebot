@@ -3,6 +3,26 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
 
+var mId = Math.floor((Math.random() * 1000) + 1);
+var APIkey = '?api_key=69c569210010a0db6bf4197759641bb1';
+var baseUrl = 'https://api.themoviedb.org/3/movie/';
+module.exports = function (callback){
+
+}
+
+request({
+  method: 'GET', json:true,
+  url: baseUrl + mId + APIkey,
+  headers: {
+    'Accept': 'application/json'
+  }}, function (error, response, body) {
+  // console.log('Response:', body);
+  // console.log('Original Title:', body.original_title);
+  // console.log('Popularity: ', body.popularity);
+  var title = body.original_title ;
+});
+
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -21,72 +41,9 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-var imageR = [  "http://www.impawards.com/2014/posters/other_woman_ver2_xlg.jpg",
-                "http://i.dailymail.co.uk/i/pix/2015/06/06/21/2968A2DE00000578-0-image-a-112_1433624173664.jpg",
-                "https://themoviemusings.files.wordpress.com/2014/10/gone-girl-poster.jpg",
-                "http://media2.popsugar-assets.com/files/2014/08/04/874/n/1922398/72e18dbc93806fd8_thumb_temp_image33115181406937918/i/Best-Rachel-McAdams-Moments-Video.jpg",
-                "http://cdn.rsvlts.com/wp-content/uploads/2013/03/Lily-Aldridge-Victorias-Secret-78.jpg",
-                "https://s-media-cache-ak0.pinimg.com/736x/53/0d/97/530d97eb70b9a7a46be9fe5b661eac2b.jpg",
-                "http://celebmafia.com/wp-content/uploads/2015/08/arielle-vandenberg-2015-mtv-video-music-awards-at-microsoft-theater-in-los-angeles_3.jpg",
-                "http://1.bp.blogspot.com/-Ez5r6kFJUT4/UAdAmsDb3NI/AAAAAAAAD3E/i-M1k2DE4LI/s1600/sara+sampaio+H+&+M.jpg",
-                "http://4.bp.blogspot.com/-x1mFPxL5Zbo/VZsE3WqIxUI/AAAAAAAB6ZI/ukv6ncqliSY/s1600/V553483_CROP1.jpg",
-                "http://www3.pictures.zimbio.com/pc/Dutch+model+actress+Doutzen+Kroes+seen+showing+V2rg_1Vn27ex.jpg",
-                "https://myheromotocorp.files.wordpress.com/2011/09/alessandra-ambrosio-vs-bikini2-03.jpg",
-                "https://mrpopat.in/admin/upload/wallpaper/201311081383915204356108201.jpeg",
-                "http://www.laughspark.info/uploadfiles/megan-fox-hot-body-635668868863449122-11168.jpg",
-                "https://s-media-cache-ak0.pinimg.com/736x/20/10/51/201051b7818c3173d41c9268efcdce2c.jpg",
-                "http://hotorbeast.com/wp-content/uploads/2015/05/rtaylor-gallery20.jpg",
-                "http://vignette1.wikia.nocookie.net/almost-human/images/a/ac/Minka_Kelly.jpg",
-                "http://tomandlorenzo.com/wp-content/uploads/2015/05/Taylor-Swift-2015-Billboard-Music-Awards-Red-Carpet-Fashion-Balmain-Tom-Lorenzo-Site-TLO-1.jpg",
-                "http://4.bp.blogspot.com/-vyJyboVddJQ/Uoy-m46Z0gI/AAAAAAAAA4w/XaHn6F7QAPg/s1600/selena-gomez-sexy-bikini-picture.jpg",
-                "http://i.imgur.com/LD0sH0s.jpg",
-                "http://www.magment.com/wp-content/uploads/2015/11/Hilary-Duff-2.jpg",
-                "http://www.hollywoodtake.com/sites/default/files/styles/large/public/2014/01/21/jennifer-connelly.jpg",
-                "http://celebslam.celebuzz.com//bfm_gallery/2014/01/Margot%20Robbie%20Internet%20Nudes/gallery_enlarged/gallery_enlarged-margot-robbie-wolf-wall-street-nude-09.jpg",
-                "http://www.speakerscorner.me/wp-content/uploads/2016/02/josephine28.jpg",
-                "https://s-media-cache-ak0.pinimg.com/736x/ef/eb/81/efeb813a5548896b0511808dae54f377.jpg",
-                "http://3.bp.blogspot.com/-Em9nOXWPBLc/UF1s64MEGwI/AAAAAAAACsI/8Tc2bNdQ8UU/s1600/kristen+stewart+hot+wallpapers55.jpg",
-                "http://i.imgur.com/YodsyhS.jpg",
-                "https://upload.wikimedia.org/wikipedia/commons/6/6a/Ana_Beatriz_Barros.jpg",
-                "http://www.twistedlifestyle.com/Images/Victorias-Secret-Swim-2013-Catalogue-002.jpg",
-                "http://cdn.sortrashion.com/wp-content/uploads/2014/03/karlie-kloss-lingerie06.jpg",
-                "https://s-media-cache-ak0.pinimg.com/736x/04/09/ea/0409eac46d386034cb14a5c882a06343.jpg",
-                "http://www.moviemagik.in/files/actors/907/denise-brichards-nose-job-1437589757.jpg",
-                "http://1.bp.blogspot.com/-RUpux6to0lk/UXj0FUsDrDI/AAAAAAAAAfg/Up0RTt1fGzg/s1600/Red-hot-Esha-Gupta-displays-her-ethnic-side-in-Jannat-2-Movie.jpg"
-            ];
+var imageR = [];
 
-var gifR = [ "http://66.media.tumblr.com/5eeb15b82ba067cdff33d27b772c9cfb/tumblr_nf7beslJCY1tofduqo1_500.gif",
-             "http://25.media.tumblr.com/972faa2f97aa452e40dacb0520b1d2c6/tumblr_mvpqdoWGMk1qkzl7oo1_500.gif",
-             "https://media.giphy.com/media/HV0xXL748N64U/giphy.gif",
-             "http://49.media.tumblr.com/tumblr_lrtp6nB4UR1qlhwa6o1_500.gif",
-             "http://cdn.rsvlts.com/wp-content/uploads/2015/01/Hot-Tubs-Are-Better-In-GIF-Form-010.gif",
-             "http://cdn.rsvlts.com/wp-content/uploads/2013/04/Megan-Fox-GIF-09.gif",
-             "https://media.giphy.com/media/2f4Sp5JKzn5XG/giphy.gif",
-             "https://chatroomconvocom.files.wordpress.com/2016/04/celebvid-29.gif",
-             "http://img.izismile.com/img/img8/20150221/1000/kelly_brooks_sexy_gifs_16.gif",
-             "http://x.imagefapusercontent.com/u/celebloops/4135022/495702202/tumblr_mmz5atbsJM1rzt0e7o3_400.gif",
-             "http://66.media.tumblr.com/ad7b5982e223e99ff943ae253fef1ed1/tumblr_mn2r0efyOy1rfdvpto1_400.gif",
-             "http://www.radass.com/wp-content/uploads/2015/10/Natasha-Henstridge-06.gif",
-             "http://66.media.tumblr.com/0e61d4432f80d77535cfeddd2ffc6917/tumblr_o7vqtyYLUv1scdih6o1_500.gif",
-             "http://67.media.tumblr.com/ac845d92e113a56c4213a4a4377377a8/tumblr_o7vqudiNq61scdih6o1_500.gif",
-             "http://67.media.tumblr.com/c5c757c89e725fe2c99d56eac908c1b9/tumblr_o7vqrmgv8y1scdih6o1_500.gif",
-             "http://66.media.tumblr.com/cfcca404ba95043468426379478ed0ec/tumblr_o7vqqy2Pn71scdih6o1_500.gif",
-             "http://66.media.tumblr.com/22c17a8d54b2b2a11ae224edbe4b157e/tumblr_o7vqqjOQYw1scdih6o1_500.gif",
-             "http://67.media.tumblr.com/b92e4c083fd60ecc0ef1342be5b4194a/tumblr_o7vqlypPGg1scdih6o1_250.gif",
-             "http://66.media.tumblr.com/4e71de3781d0d855aa8d162f7e850220/tumblr_o7vqj8aAtE1scdih6o1_500.gif",
-             "http://67.media.tumblr.com/43188cfa115625a85674badf3be381f8/tumblr_nuzjwvXZWc1u1dkf2o1_400.gif",
-             "https://i.imgflip.com/617q5.gif",
-             "http://guyspeed.com/files/2014/08/Rachel-McAdams-GIFs-4.gif",
-             "http://guyspeed.com/files/2014/08/Rachel-McAdams-red-panties-gif.gif",
-             "http://guyspeed.com/files/2016/06/Jessica-Biel-wifebeater-Texas-Chainsaw.gif",
-             "https://media.giphy.com/media/M2OsxQG6aBdU4/giphy.gif",
-             "http://guyspeed.com/files/2016/06/Jessica-Biel-booby-bounce-Texas-Chainsaw.gif",
-             "http://guyspeed.com/files/2016/04/Torrie-Wilson-tiny-bikini.gif",
-             "http://guyspeed.com/files/2016/03/Megan-Fox-removes-her-dress.gif",
-             "http://guyspeed.com/files/2016/03/Megan-Fox-taking-off-her-shirt.gif",
-             "http://guyspeed.com/files/2016/02/Nina-Agdal-no-bathing-suit.gif",
-             "http://guyspeed.com/files/2016/02/Nina-Agdal-blue-lingerie.gif"
-            ];
+var gifR = [];
 // handler receiving messages
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
@@ -100,6 +57,10 @@ app.post('/webhook', function (req, res) {
         		case "Hey":
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
+
+                case "movie":
+                    sendMessage(event.sender.id, {text: title});
+                    break;
 
         		case "Thanks":
         		case "thank you":
@@ -142,16 +103,6 @@ app.post('/webhook', function (req, res) {
                     sendGif(event.sender.id, event.message.text);
                     break;
 
-                case "all gifs":
-                case "All Gifs":
-                    sendGif(event.sender.id, event.message.text);
-                    break;
-
-                case "All Images":
-                case "all images":
-                    sendImage(event.sender.id, event.message.text);
-                    break;
-
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, don't get what "+ event.message.text + " means!"});
                     sendImage(event.sender.id, event.message.text);
@@ -181,68 +132,31 @@ function sendMessage(recipientId, message) {
     });
 };
 
+//Math.floor((Math.random() * 30) - 1)
 
 function sendImage(recipientId, message) {
-    if(message === "all images" || message === "All Images"){
-        for(var i = 0; i < 31; i++)
-        {
-            message = {
-                "attachment": {
-                    "type": "image",
-                    "payload": {
-                        "url": imageR[i]
-                    } 
-                }
-            };
-            sendMessage(recipientId, message);
-        }
-    }
-    else {
-        for(var i = 0; i < 2; i++)
-        {
-            message = {
-                "attachment": {
-                    "type": "image",
-                    "payload": {
-                        "url": imageR[Math.floor((Math.random() * 30) - 1)]
-                    } 
-                }
-            };
-            sendMessage(recipientId, message);
-        }
-    }
+    message = {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": imageR[]
+                } 
+            }
+        };
+        sendMessage(recipientId, message);
 };
 
 function sendGif(recipientId, message) {
-    if(message === "all gif" || message === "All Gifs"){
-        for(var i = 0; i < 31; i++)
-        {
-            message = {
-                "attachment": {
-                    "type": "image",
-                    "payload": {
-                        "url": gifR[i]
-                    } 
-                }
-            };
-            sendMessage(recipientId, message);
+    message = {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": gifR[]
+            } 
         }
-    }
-    else {
-
-        for(var i = 0; i < 2; i++)
-        {
-            message = {
-                "attachment": {
-                    "type": "image",
-                    "payload": {
-                        "url": gifR[Math.floor((Math.random() * 31) - 1)]
-                    } 
-                }
-            };
-            sendMessage(recipientId, message);
-        }
-    }
+    };
+    sendMessage(recipientId, message);
+      
 };
 
 function moreMovies(recipientId, text){
@@ -456,26 +370,4 @@ function suggestAnother(recipientId, text){
     };
             
     sendMessage(recipientId, message);
-};
-
-
-                // "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
-                // "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
-                // "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
-                // "https://cdn2.vox-cdn.com/thumbor/bIvStQ6vUZ3NWfdIrRl8mBAqrzw=/cdn0.vox-cdn.com/uploads/chorus_asset/file/6326235/Hollywood-Movie-captain-america-the-winter-soldier-2014-movie-poster.jpg",
-                // "http://www.seat42f.com/wp-content/uploads/2014/08/BEFORE-I-GO-TO-SLEEP-Movie-Poster.jpg",
-                // "http://www.fatmovieguy.com/wp-content/uploads/2015/11/The-Huntsman-Winters-War-Movie-Poster-Charlize-Theron.jpg",
-                // "http://4.bp.blogspot.com/-7og3JJt2EaY/Tpx15P4ZlUI/AAAAAAAADaY/YpS3TWofg7Y/s1600/Johnny+English+Reborn+Movie+Wallpaper.jpeg",
-                // "https://farm9.staticflickr.com/8726/17313323431_69d34a4f25_o.jpg",
-                // "http://www.impawards.com/intl/uk/2013/posters/about_time.jpg",
-                // "http://www.movie-poster-artwork-finder.com/posters/morning-glory-poster-artwork-harrison-ford-rachel-mcadams-diane-keaton.jpg",
-                // "https://s-media-cache-ak0.pinimg.com/736x/33/df/ab/33dfabdb1eef83e6c9147db6fb6372a5.jpg",
-                // "http://www.movie-poster-artwork-finder.com/posters/sherlock-holmes-2009-poster-artwork-robert-downey-jr-jude-law-rachel-mcadams.jpg",
-                // "https://www.movieposter.com/posters/archive/main/56/MPW-28318",
-                // "http://www.impawards.com/2006/posters/departed_ver9.jpg",
-                // "http://www.impawards.com/2012/posters/vow_ver2_xlg.jpg",
-                // "http://cdn.collider.com/wp-content/image-base/Movies/T/Time_Travelers_Wife/posters/The%20Time%20Travelers%20Wife%20movie%20poster.jpg",
-                // "http://www.newdvdreleasedates.com/images/posters/large/this-is-40-2012-03.jpg",
-                // "http://moviecultists.com/wp-content/uploads/2011/12/American-Reunion-movie-poster.jpg",
-                // "https://moviemanjackson.files.wordpress.com/2014/11/hbposter.jpg",
-                // "http://www.impawards.com/2010/posters/due_date_xlg.jpg",
+}; 
