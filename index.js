@@ -154,13 +154,22 @@ function sendMessage(recipientId, message) {
     });
 };
 
+
 function sendImage(recipientId, message) {
         message = {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "url": imageR[Math.floor((Math.random() * 50) + 1)],
-                    "url": imageR[Math.floor((Math.random() * 50) + 1)],
+                    "url": imageR[Math.floor((Math.random() * 50) + 1)]
+                } 
+            }
+        };
+        sendMessage(recipientId, message);
+
+        message = {
+            "attachment": {
+                "type": "image",
+                "payload": {
                     "url": imageR[Math.floor((Math.random() * 50) + 1)]
                 } 
             }
