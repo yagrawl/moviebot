@@ -21,27 +21,7 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-var imageR = [  "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
-                "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
-                "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
-                "https://cdn2.vox-cdn.com/thumbor/bIvStQ6vUZ3NWfdIrRl8mBAqrzw=/cdn0.vox-cdn.com/uploads/chorus_asset/file/6326235/Hollywood-Movie-captain-america-the-winter-soldier-2014-movie-poster.jpg",
-                "http://www.seat42f.com/wp-content/uploads/2014/08/BEFORE-I-GO-TO-SLEEP-Movie-Poster.jpg",
-                "http://www.fatmovieguy.com/wp-content/uploads/2015/11/The-Huntsman-Winters-War-Movie-Poster-Charlize-Theron.jpg",
-                "http://4.bp.blogspot.com/-7og3JJt2EaY/Tpx15P4ZlUI/AAAAAAAADaY/YpS3TWofg7Y/s1600/Johnny+English+Reborn+Movie+Wallpaper.jpeg",
-                "https://farm9.staticflickr.com/8726/17313323431_69d34a4f25_o.jpg",
-                "http://www.impawards.com/intl/uk/2013/posters/about_time.jpg",
-                "http://www.movie-poster-artwork-finder.com/posters/morning-glory-poster-artwork-harrison-ford-rachel-mcadams-diane-keaton.jpg",
-                "https://s-media-cache-ak0.pinimg.com/736x/33/df/ab/33dfabdb1eef83e6c9147db6fb6372a5.jpg",
-                "http://www.movie-poster-artwork-finder.com/posters/sherlock-holmes-2009-poster-artwork-robert-downey-jr-jude-law-rachel-mcadams.jpg",
-                "https://www.movieposter.com/posters/archive/main/56/MPW-28318",
-                "http://www.impawards.com/2006/posters/departed_ver9.jpg",
-                "http://www.impawards.com/2012/posters/vow_ver2_xlg.jpg",
-                "http://cdn.collider.com/wp-content/image-base/Movies/T/Time_Travelers_Wife/posters/The%20Time%20Travelers%20Wife%20movie%20poster.jpg",
-                "http://www.newdvdreleasedates.com/images/posters/large/this-is-40-2012-03.jpg",
-                "http://moviecultists.com/wp-content/uploads/2011/12/American-Reunion-movie-poster.jpg",
-                "https://moviemanjackson.files.wordpress.com/2014/11/hbposter.jpg",
-                "http://www.impawards.com/2010/posters/due_date_xlg.jpg",
-                "http://www.impawards.com/2014/posters/other_woman_ver2_xlg.jpg",
+var imageR = [  "http://www.impawards.com/2014/posters/other_woman_ver2_xlg.jpg",
                 "http://i.dailymail.co.uk/i/pix/2015/06/06/21/2968A2DE00000578-0-image-a-112_1433624173664.jpg",
                 "https://themoviemusings.files.wordpress.com/2014/10/gone-girl-poster.jpg",
                 "http://media2.popsugar-assets.com/files/2014/08/04/874/n/1922398/72e18dbc93806fd8_thumb_temp_image33115181406937918/i/Best-Rachel-McAdams-Moments-Video.jpg",
@@ -156,13 +136,13 @@ function sendMessage(recipientId, message) {
 
 
 function sendImage(recipientId, message) {
-    for(var i = 0; i < 35; i++)
+    for(var i = 0; i < 2; i++)
     {
         message = {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "url": imageR[Math.floor((Math.random() * 50) + 1)]
+                    "url": imageR[Math.floor((Math.random() * 30) + 1)]
                 } 
             }
         };
@@ -382,3 +362,25 @@ function suggestAnother(recipientId, text){
             
     sendMessage(recipientId, message);
 };
+
+
+                // "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
+                // "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
+                // "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/grey-movie-poster.jpg",
+                // "https://cdn2.vox-cdn.com/thumbor/bIvStQ6vUZ3NWfdIrRl8mBAqrzw=/cdn0.vox-cdn.com/uploads/chorus_asset/file/6326235/Hollywood-Movie-captain-america-the-winter-soldier-2014-movie-poster.jpg",
+                // "http://www.seat42f.com/wp-content/uploads/2014/08/BEFORE-I-GO-TO-SLEEP-Movie-Poster.jpg",
+                // "http://www.fatmovieguy.com/wp-content/uploads/2015/11/The-Huntsman-Winters-War-Movie-Poster-Charlize-Theron.jpg",
+                // "http://4.bp.blogspot.com/-7og3JJt2EaY/Tpx15P4ZlUI/AAAAAAAADaY/YpS3TWofg7Y/s1600/Johnny+English+Reborn+Movie+Wallpaper.jpeg",
+                // "https://farm9.staticflickr.com/8726/17313323431_69d34a4f25_o.jpg",
+                // "http://www.impawards.com/intl/uk/2013/posters/about_time.jpg",
+                // "http://www.movie-poster-artwork-finder.com/posters/morning-glory-poster-artwork-harrison-ford-rachel-mcadams-diane-keaton.jpg",
+                // "https://s-media-cache-ak0.pinimg.com/736x/33/df/ab/33dfabdb1eef83e6c9147db6fb6372a5.jpg",
+                // "http://www.movie-poster-artwork-finder.com/posters/sherlock-holmes-2009-poster-artwork-robert-downey-jr-jude-law-rachel-mcadams.jpg",
+                // "https://www.movieposter.com/posters/archive/main/56/MPW-28318",
+                // "http://www.impawards.com/2006/posters/departed_ver9.jpg",
+                // "http://www.impawards.com/2012/posters/vow_ver2_xlg.jpg",
+                // "http://cdn.collider.com/wp-content/image-base/Movies/T/Time_Travelers_Wife/posters/The%20Time%20Travelers%20Wife%20movie%20poster.jpg",
+                // "http://www.newdvdreleasedates.com/images/posters/large/this-is-40-2012-03.jpg",
+                // "http://moviecultists.com/wp-content/uploads/2011/12/American-Reunion-movie-poster.jpg",
+                // "https://moviemanjackson.files.wordpress.com/2014/11/hbposter.jpg",
+                // "http://www.impawards.com/2010/posters/due_date_xlg.jpg",
