@@ -161,7 +161,7 @@ function sendImage(recipientId, message) {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "url": imageR[Math.floor((Math.random() * 30) + 1)]
+                    "url": imageR[Math.floor((Math.random() * 30) - 1)]
                 } 
             }
         };
@@ -174,7 +174,7 @@ function sendGif(recipientId, message) {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "url": gifR[Math.floor((Math.random() * 10) + 1)]
+                    "url": gifR[Math.floor((Math.random() * 10) - 1)]
                 } 
             }
         };
