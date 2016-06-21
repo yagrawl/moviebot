@@ -142,6 +142,16 @@ app.post('/webhook', function (req, res) {
                     sendGif(event.sender.id, event.message.text);
                     break;
 
+                case "all gifs":
+                case "All Gifs":
+                    sendGif(event.sender.id, event.message.text);
+                    break;
+
+                case "All Images":
+                case "all images":
+                    sendImage(event.sender.id, event.message.text);
+                    break;
+
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, don't get what "+ event.message.text + " means!"});
                     sendImage(event.sender.id, event.message.text);
@@ -173,32 +183,65 @@ function sendMessage(recipientId, message) {
 
 
 function sendImage(recipientId, message) {
-    for(var i = 0; i < 2; i++)
-    {
-        message = {
-            "attachment": {
-                "type": "image",
-                "payload": {
-                    "url": imageR[Math.floor((Math.random() * 30) - 1)]
-                } 
-            }
-        };
-        sendMessage(recipientId, message);
+    if(message === "all images" || message === "All Images"){
+        for(var i = 0; i < 31; i++)
+        {
+            message = {
+                "attachment": {
+                    "type": "image",
+                    "payload": {
+                        "url": imageR[i]
+                    } 
+                }
+            };
+            sendMessage(recipientId, message);
+        }
+    }
+    else {
+        for(var i = 0; i < 2; i++)
+        {
+            message = {
+                "attachment": {
+                    "type": "image",
+                    "payload": {
+                        "url": imageR[Math.floor((Math.random() * 30) - 1)]
+                    } 
+                }
+            };
+            sendMessage(recipientId, message);
+        }
     }
 };
 
 function sendGif(recipientId, message) {
-    for(var i = 0; i < 2; i++)
-    {
-        message = {
-            "attachment": {
-                "type": "image",
-                "payload": {
-                    "url": gifR[Math.floor((Math.random() * 31) - 1)]
-                } 
-            }
-        };
-        sendMessage(recipientId, message);
+    if(message === "all gif" || message === "All Gifs"){
+        for(var i = 0; i < 31; i++)
+        {
+            message = {
+                "attachment": {
+                    "type": "image",
+                    "payload": {
+                        "url": gifR[i]
+                    } 
+                }
+            };
+            sendMessage(recipientId, message);
+        }
+    }
+    else {
+
+        for(var i = 0; i < 2; i++)
+        {
+            message = {
+                "attachment": {
+                    "type": "image",
+                    "payload": {
+                        "url": gifR[Math.floor((Math.random() * 31) - 1)]
+                    } 
+                }
+            };
+            sendMessage(recipientId, message);
+        }
     }
 };
 
