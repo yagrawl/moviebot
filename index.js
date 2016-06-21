@@ -154,23 +154,18 @@ function sendMessage(recipientId, message) {
 };
 
 function sendImage(recipientId, message) {
-    
+    for(i = 0; i < 3; i++)
+    {
         message = {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "elements": [{
-                        "url": imageR[Math.floor((Math.random() * 50) + 1)]
-                    },{
-                        "url": imageR[Math.floor((Math.random() * 50) + 1)]
-                    },{
-                        "url": imageR[Math.floor((Math.random() * 50) + 1)]
-                    }]
+                    "url": imageR[Math.floor((Math.random() * 50) + 1)
                 } 
             }
         };
         sendMessage(recipientId, message);
-    
+    }
 };
 
 function moreMovies(recipientId, text){
