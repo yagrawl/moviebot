@@ -49,10 +49,10 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-                // case "movie":
-                //     requestMovie();
-                //     sendMessage(event.sender.id, {text: title});
-                //     break;
+                case "movie":
+                    requestMovie();
+                    sendMessage(event.sender.id, {text: title});
+                    break;
 
         		case "Thanks":
         		case "thank you":
@@ -96,9 +96,7 @@ app.post('/webhook', function (req, res) {
                     break;
 
         		default:
-        			sendMessage(event.sender.id, {text: "Sorry, don't get what "+ event.message.text + " means!"});
-                    sendImage(event.sender.id, event.message.text);
-        	        sendMessage(event.sender.id, {text: "For your troubles! :)"});
+        			sendMessage(event.sender.id, {text: "Sorry, don't get what " + "'" + event.message.text  + "'" + " means!"});
         	}
     	}	
     }
@@ -124,24 +122,24 @@ function sendMessage(recipientId, message) {
     });
 };
 
-// function requestMovie(){
+function requestMovie(){
 
-//     module.exports = function (callback){
+    module.exports = function (callback){
 
-//     }
-//     request({
-//         method: 'GET', json:true,
-//         url: baseUrl + mId + APIkey,
-//         headers: {
-//             'Accept': 'application/json'
-//         }}, function (error, response, body) {
-//   //console.log('Response:', body);
-//   //console.log('Original Title:', body.original_title);
-//   //console.log('Popularity: ', body.popularity);
-//         var title = body.original_title ;
-//     });
-// };
-//Math.floor((Math.random() * 30) - 1)
+    }
+    request({
+        method: 'GET', json:true,
+        url: baseUrl + mId + APIkey,
+        headers: {
+            'Accept': 'application/json'
+        }}, function (error, response, body) {
+  //console.log('Response:', body);
+  //console.log('Original Title:', body.original_title);
+  //console.log('Popularity: ', body.popularity);
+        var title = body.original_title ;
+    });
+};
+Math.floor((Math.random() * 30) - 1)
 
 function sendImage(recipientId, message) {
     message = {
