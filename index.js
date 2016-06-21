@@ -66,6 +66,10 @@ app.post('/webhook', function (req, res) {
         			moreMovies(event.sender.id, event.message.text);
         			break;
 
+                case "About Time":
+                    sendImage(event.sender.id, event.message.text);
+                    break;
+
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, didn't get that!"});
         	
@@ -92,6 +96,19 @@ function sendMessage(recipientId, message) {
             console.log('Error: ', response.body.error);
         }
     });
+};
+
+function sendImage(recipientId, message) {
+    var imageUrl3 = "http://www.impawards.com/intl/uk/2013/posters/about_time.jpg";
+    message = {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": imageUrl3 
+                } 
+            }
+    };
+    sendMessage(recipientId, message);
 };
 
 function moreMovies(recipientId, text){
