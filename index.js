@@ -66,8 +66,26 @@ var gifR = [ "http://66.media.tumblr.com/5eeb15b82ba067cdff33d27b772c9cfb/tumblr
              "http://img.izismile.com/img/img8/20150221/1000/kelly_brooks_sexy_gifs_16.gif",
              "http://x.imagefapusercontent.com/u/celebloops/4135022/495702202/tumblr_mmz5atbsJM1rzt0e7o3_400.gif",
              "http://66.media.tumblr.com/ad7b5982e223e99ff943ae253fef1ed1/tumblr_mn2r0efyOy1rfdvpto1_400.gif",
-             "http://www.radass.com/wp-content/uploads/2015/10/Natasha-Henstridge-06.gif"
-
+             "http://www.radass.com/wp-content/uploads/2015/10/Natasha-Henstridge-06.gif",
+             "http://66.media.tumblr.com/0e61d4432f80d77535cfeddd2ffc6917/tumblr_o7vqtyYLUv1scdih6o1_500.gif",
+             "http://67.media.tumblr.com/ac845d92e113a56c4213a4a4377377a8/tumblr_o7vqudiNq61scdih6o1_500.gif",
+             "http://67.media.tumblr.com/c5c757c89e725fe2c99d56eac908c1b9/tumblr_o7vqrmgv8y1scdih6o1_500.gif",
+             "http://66.media.tumblr.com/cfcca404ba95043468426379478ed0ec/tumblr_o7vqqy2Pn71scdih6o1_500.gif",
+             "http://66.media.tumblr.com/22c17a8d54b2b2a11ae224edbe4b157e/tumblr_o7vqqjOQYw1scdih6o1_500.gif",
+             "http://67.media.tumblr.com/b92e4c083fd60ecc0ef1342be5b4194a/tumblr_o7vqlypPGg1scdih6o1_250.gif",
+             "http://66.media.tumblr.com/4e71de3781d0d855aa8d162f7e850220/tumblr_o7vqj8aAtE1scdih6o1_500.gif",
+             "http://67.media.tumblr.com/43188cfa115625a85674badf3be381f8/tumblr_nuzjwvXZWc1u1dkf2o1_400.gif",
+             "https://i.imgflip.com/617q5.gif",
+             "http://guyspeed.com/files/2014/08/Rachel-McAdams-GIFs-4.gif",
+             "http://guyspeed.com/files/2014/08/Rachel-McAdams-red-panties-gif.gif",
+             "http://guyspeed.com/files/2016/06/Jessica-Biel-wifebeater-Texas-Chainsaw.gif",
+             "https://media.giphy.com/media/M2OsxQG6aBdU4/giphy.gif",
+             "http://guyspeed.com/files/2016/06/Jessica-Biel-booby-bounce-Texas-Chainsaw.gif",
+             "http://guyspeed.com/files/2016/04/Torrie-Wilson-tiny-bikini.gif",
+             "http://guyspeed.com/files/2016/03/Megan-Fox-removes-her-dress.gif",
+             "http://guyspeed.com/files/2016/03/Megan-Fox-taking-off-her-shirt.gif",
+             "http://guyspeed.com/files/2016/02/Nina-Agdal-no-bathing-suit.gif",
+             "http://guyspeed.com/files/2016/02/Nina-Agdal-blue-lingerie.gif"
             ];
 // handler receiving messages
 app.post('/webhook', function (req, res) {
@@ -170,15 +188,18 @@ function sendImage(recipientId, message) {
 };
 
 function sendGif(recipientId, message) {
+    for(var i = 0; i < 2; i++)
+    {
         message = {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "url": gifR[Math.floor((Math.random() * 10) - 1)]
+                    "url": gifR[Math.floor((Math.random() * 31) - 1)]
                 } 
             }
         };
         sendMessage(recipientId, message);
+    }
 };
 
 function moreMovies(recipientId, text){
