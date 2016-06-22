@@ -26,16 +26,6 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-// function getMovie(theUrl, callback)
-// {
-//     var getMovies = new XMLHttpRequest();
-//     getMovies.onreadystatechange = function() { 
-//         if (getMovies.readyState == 4 && getMovies.status == 200)
-//             callback(getMovies.responseText);
-//     }
-//     getMovies.open("GET", theUrl, true); // true for asynchronous 
-//     getMovies.send(null);
-// }
 
 var imageR = [  "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg",
                 "https://www.movieposter.com/posters/archive/main/4/MPW-2244",
@@ -57,11 +47,10 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-                // case "movie":
-                // case "Movie":
-                //     getMovie(Murl);
-                //     sendMessage(event.sender.id, {text: body.original_title});
-                //     break;
+                case "movie":
+                case "Movie":
+                    getMovie(event.sender.id);
+                    break;
 
         		case "Thanks":
         		case "thank you":
@@ -139,6 +128,23 @@ function sendImage(recipientId, message) {
         sendMessage(recipientId, message);
 };
 
+function getMovie(recipientId){
+    request({
+    method: 'GET',
+    json: {
+        title: body.original_title,
+    },
+    url: Murl,
+    headers: {
+        'Accept': 'application/json'
+    }}, function (error, response, body) {
+        console.log('Status:', response.statusCode);
+        console.log('Headers:', JSON.stringify(response.headers));
+        console.log('Response:', body);
+    });
+    sendMessage(recipientId, title);
+
+};
 
 function moreMovies(recipientId, text){
 	var imageUrl1 = "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg";
