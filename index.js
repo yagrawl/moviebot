@@ -55,11 +55,11 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-                case "movie":
-                case "Movie":
-                    getMovie(event.sender.id);
-                    sendMessage(event.sender.id, {text: "Not stuck for now"});
-                    break;
+                // case "movie":
+                // case "Movie":
+                //     getMovie(event.sender.id);
+                //     sendMessage(event.sender.id, {text: "Not stuck for now"});
+                //     break;
 
         		case "Thanks":
         		case "thank you":
@@ -137,26 +137,26 @@ function sendImage(recipientId, message) {
         sendMessage(recipientId, message);
 };
 
-function getMovie(recipientId) {
-    request({
-        method: 'GET',
-        // json: {
-        //     body.original_title: title,
-        // },
-        url: Murl,
-        headers: {
-            'Accept': 'application/json'
-        }
-    }, 
-        function (error, response, body) {
-            console.log('Status:', response.statusCode);
-            console.log('Headers:', JSON.stringify(response.headers));
-            console.log('Response:', body);
-            //sendMessage(recipientId, body.original_title );
-        });
-        sendMessage(recipientId, {text: "Test"});
+// function getMovie(recipientId) {
+//     request({
+//         method: 'GET',
+//         // json: {
+//         //     body.original_title: title,
+//         // },
+//         url: Murl,
+//         headers: {
+//             'Accept': 'application/json'
+//         }
+//     }, 
+//         function (error, response, body) {
+//             console.log('Status:', response.statusCode);
+//             console.log('Headers:', JSON.stringify(response.headers));
+//             console.log('Response:', body);
+//             //sendMessage(recipientId, body.original_title );
+//         });
+//         sendMessage(recipientId, {text: "Test"});
 
-};
+// };
 
 function moreMovies(recipientId, text){
 	var imageUrl1 = "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg";
