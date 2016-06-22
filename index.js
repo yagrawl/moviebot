@@ -47,10 +47,10 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-                case "movie":
-                case "Movie":
-                    getMovie(event.sender.id);
-                    break;
+                // case "movie":
+                // case "Movie":
+                //     getMovie(event.sender.id);
+                //     break;
 
         		case "Thanks":
         		case "thank you":
