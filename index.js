@@ -132,7 +132,7 @@ function getMovie(recipientId){
     request({
     method: 'GET',
     json: {
-        title: body.original_title,
+        body.original_title: title,
     },
     url: Murl,
     headers: {
