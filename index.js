@@ -26,16 +26,16 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-function getMovie(theUrl, callback)
-{
-    var getMovies = new XMLHttpRequest();
-    getMovies.onreadystatechange = function() { 
-        if (getMovies.readyState == 4 && getMovies.status == 200)
-            callback(getMovies.responseText);
-    }
-    getMovies.open("GET", theUrl, true); // true for asynchronous 
-    getMovies.send(null);
-}
+// function getMovie(theUrl, callback)
+// {
+//     var getMovies = new XMLHttpRequest();
+//     getMovies.onreadystatechange = function() { 
+//         if (getMovies.readyState == 4 && getMovies.status == 200)
+//             callback(getMovies.responseText);
+//     }
+//     getMovies.open("GET", theUrl, true); // true for asynchronous 
+//     getMovies.send(null);
+// }
 
 var imageR = [  "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg",
                 "https://www.movieposter.com/posters/archive/main/4/MPW-2244",
@@ -57,11 +57,11 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-                case "movie":
-                case "Movie":
-                    getMovie(Murl);
-                    sendMessage(event.sender.id, {text: body.original_title});
-                    break;
+                // case "movie":
+                // case "Movie":
+                //     getMovie(Murl);
+                //     sendMessage(event.sender.id, {text: body.original_title});
+                //     break;
 
         		case "Thanks":
         		case "thank you":
