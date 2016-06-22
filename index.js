@@ -6,7 +6,7 @@ var mId = Math.floor((Math.random() * 1000) + 1);
 var APIkey = '?api_key=69c569210010a0db6bf4197759641bb1';
 var baseUrl = 'https://api.themoviedb.org/3/movie/';
 var Murl = baseUrl + mId + APIkey;
-
+var igur = 'http://img-9gag-fun.9cache.com/photo/';
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -31,6 +31,14 @@ var imageR = [  "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-pos
                 "https://www.movieposter.com/posters/archive/main/4/MPW-2244",
                 "http://cdn.mos.cms.futurecdn.net/8e5f9fab8d96968fc28267a4ed4a6707-650-80.jpg",
                 "http://pixartimes.com/wp-content/uploads/2015/03/Inside-Out-Official-Poster.jpg"];
+
+var lc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+         "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
+         "1", "2", "3", "4", "5", "6", "7", "8","9","0"];
+
+var uc = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+         "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+         "1", "2", "3", "4", "5", "6", "7", "8","9","0"];
 
 
 // handler receiving messages
