@@ -2,6 +2,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
+var mId = Math.floor((Math.random() * 1000) + 1);
+var APIkey = '?api_key=69c569210010a0db6bf4197759641bb1';
+var baseUrl = 'https://api.themoviedb.org/3/movie/';
+var Murl = baseUrl + mId + APIkey;
 
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -22,6 +26,13 @@ app.get('/webhook', function (req, res) {
     }
 });
 
+function getMovie(theUrl){
+    var getMovie = new XMLHttpRequest();
+    getMovie.open( "GET", theUrl, false ); 
+    getMovie.send( null );
+    return getMovie.responseText;
+};
+
 var imageR = [  "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg",
                 "https://www.movieposter.com/posters/archive/main/4/MPW-2244",
                 "http://cdn.mos.cms.futurecdn.net/8e5f9fab8d96968fc28267a4ed4a6707-650-80.jpg",
@@ -41,6 +52,12 @@ app.post('/webhook', function (req, res) {
         		case "Hey":
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
+
+                case "movie":
+                case "Movie":
+                    getMovie(Murl);
+                    sendMessage(event.sender.id, {text: body.original_title});
+                    break;
 
         		case "Thanks":
         		case "thank you":
