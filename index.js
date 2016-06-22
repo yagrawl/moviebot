@@ -32,13 +32,13 @@ var imageR = [  "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-pos
                 "http://cdn.mos.cms.futurecdn.net/8e5f9fab8d96968fc28267a4ed4a6707-650-80.jpg",
                 "http://pixartimes.com/wp-content/uploads/2015/03/Inside-Out-Official-Poster.jpg"];
 
-var lc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-         "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
-         "1", "2", "3", "4", "5", "6", "7", "8","9","0"];
+// var lc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+//          "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
+//          "1", "2", "3", "4", "5", "6", "7", "8","9","0"];
 
-var uc = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-         "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-         "1", "2", "3", "4", "5", "6", "7", "8","9","0"];
+// var uc = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+//          "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+//          "1", "2", "3", "4", "5", "6", "7", "8","9","0"];
 
 
 // handler receiving messages
@@ -136,25 +136,25 @@ function sendImage(recipientId, message) {
         sendMessage(recipientId, message);
 };
 
-function getMovie(recipientId) {
-    request({
-        method: 'GET',
-        json: {
-            body.original_title: title,
-        },
-        url: Murl,
-        headers: {
-            'Accept': 'application/json'
-        }
-    }, 
-        function (error, response, body) {
-            console.log('Status:', response.statusCode);
-            console.log('Headers:', JSON.stringify(response.headers));
-            console.log('Response:', body);
-        });
-    sendMessage(recipientId, {text: "Through the function"} );
+// function getMovie(recipientId) {
+//     request({
+//         method: 'GET',
+//         json: {
+//             body.original_title: title,
+//         },
+//         url: Murl,
+//         headers: {
+//             'Accept': 'application/json'
+//         }
+//     }, 
+//         function (error, response, body) {
+//             console.log('Status:', response.statusCode);
+//             console.log('Headers:', JSON.stringify(response.headers));
+//             console.log('Response:', body);
+//         });
+//     sendMessage(recipientId, {text: "Through the function"} );
 
-};
+// };
 
 function moreMovies(recipientId, text){
 	var imageUrl1 = "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg";
