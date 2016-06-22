@@ -57,6 +57,7 @@ app.post('/webhook', function (req, res) {
 
                 case "movie":
                 case "Movie":
+                    getMovie(event.sender.id);
                     sendMessage(event.sender.id, {text: "Not stuck for now"});
                     break;
 
