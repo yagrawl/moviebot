@@ -154,7 +154,7 @@ function getMovie(recipientId) {
             console.log('Response:', body);
             //sendMessage(recipientId, body.original_title );
         });
-        sendMessage(event.sender.id, {text: "Test"});
+        sendMessage(recipientId, {text: "Test"});
 
 };
 
