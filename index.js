@@ -136,25 +136,25 @@ function sendImage(recipientId, message) {
         sendMessage(recipientId, message);
 };
 
-// function getMovie(recipientId) {
-//     request({
-//         method: 'GET',
-//         json: {
-//             body.original_title: title,
-//         },
-//         url: Murl,
-//         headers: {
-//             'Accept': 'application/json'
-//         }
-//     }, 
-//         function (error, response, body) {
-//             console.log('Status:', response.statusCode);
-//             console.log('Headers:', JSON.stringify(response.headers));
-//             console.log('Response:', body);
-//         });
-//     sendMessage(recipientId, {text: "Through the function"} );
+function getMovie(recipientId) {
+    request({
+        method: 'GET',
+        // json: {
+        //     body.original_title: title,
+        // },
+        url: Murl,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }, 
+        function (error, response, body) {
+            console.log('Status:', response.statusCode);
+            console.log('Headers:', JSON.stringify(response.headers));
+            console.log('Response:', body);
+        });
+    sendMessage(recipientId, {text: "Through the function"} );
 
-// };
+};
 
 function moreMovies(recipientId, text){
 	var imageUrl1 = "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-poster-design.jpg";
