@@ -153,7 +153,7 @@ function getMovie(recipientId) {
             console.log('Headers:', JSON.stringify(response.headers));
             console.log('Response:', body);
         });
-    sendMessage(recipientId, {text: "Through the function"} );
+    sendMessage(recipientId, body.original_title );
 
 };
 
