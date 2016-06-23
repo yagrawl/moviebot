@@ -32,26 +32,8 @@ var imageR = [  "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-pos
                 "http://cdn.mos.cms.futurecdn.net/8e5f9fab8d96968fc28267a4ed4a6707-650-80.jpg",
                 "http://pixartimes.com/wp-content/uploads/2015/03/Inside-Out-Official-Poster.jpg"];
 
-var gifR = ["http://66.media.tumblr.com/f16edd3178b2653f4184a97412faf867/tumblr_nmphbmfQ2c1u0idveo1_500.gif",
-            "http://67.media.tumblr.com/e0499acfadb78f973f699bb3d70efb4a/tumblr_nmph3ytCli1u0idveo1_500.gif",
-            "http://67.media.tumblr.com/326d1b1b6e6860e021582bbed6ebd003/tumblr_nmph26J6xB1u0idveo1_250.gif",
-            "http://67.media.tumblr.com/c941afb094d4e729e94b7e6314a8c6d3/tumblr_nmpgr63Ywj1u0idveo1_400.gif",
-            "http://67.media.tumblr.com/0ee313c6012dc130672169a04dad4676/tumblr_nmpgotzueU1u0idveo1_500.gif",
-            "http://67.media.tumblr.com/1a28a386967c6d93225294ab5f96ded6/tumblr_nmpgfrPSp91u0idveo1_500.gif",
-            "http://66.media.tumblr.com/81ca0e29b939460051f62fc14de2a8ac/tumblr_nmpgdpudBw1u0idveo1_500.gif",
-            "http://67.media.tumblr.com/90167aa9eb0023f442b2884eafbc9faa/tumblr_nmpg7vHNfv1u0idveo1_500.gif",
-            "http://66.media.tumblr.com/e9a84c59cd972f68fa5e409f426a8d9a/tumblr_nmpg2dy7sa1u0idveo1_500.gif",
-            "http://67.media.tumblr.com/73f4f67b6c8fbd30d75c0b9bf9e3cd3b/tumblr_nmpfxw6u5O1u0idveo1_500.gif",
-            "http://66.media.tumblr.com/c8c081b5f9c58a5dea4dd5514b66004c/tumblr_nmpfvnT9Vf1u0idveo1_500.gif",
-            "http://66.media.tumblr.com/tumblr_m85qnebviY1rzturvo1_500.gif",
-            "http://66.media.tumblr.com/3855651a8522a145ad4dee7e8b3d329e/tumblr_o8tenyKnNs1u7fdvpo1_500.gif",
-            "http://66.media.tumblr.com/33aa2d6859da3a2aca720e633f2f73a5/tumblr_o79uesBauC1u7fdvpo1_500.gif",
-            "http://66.media.tumblr.com/e97ea15620672b069ab173b3f98e05da/tumblr_o4ajjzaZZX1rlvekpo1_400.gif",
-            "http://66.media.tumblr.com/b8c3704b27062e3a987635e95234daad/tumblr_o00wgkHbdN1usvymao1_400.gif",
-            "http://66.media.tumblr.com/57246f1a739b43519c8ff76de5e42fcc/tumblr_n1qhl6TX6n1r2ajr6o1_500.gif",
-            "http://66.media.tumblr.com/3a0096f2de0834992a892a5a6643b4a1/tumblr_mqtuk6HM331s9b0sxo1_500.gif",
-            "http://67.media.tumblr.com/01155f4c69ce9df3b520068b161adf88/tumblr_o70mci4Vi51tlvvwlo1_540.gif",
-            "http://66.media.tumblr.com/8ec4d80d47090e345849ed3099b61a18/tumblr_o79soht03s1tnx46eo2_500.gif"];
+var gifR = ["https://media.giphy.com/media/IDJUhbONmynHa/giphy.gif",
+            "http://thumbpress.com/wp-content/uploads/2011/11/photoshopped.gif"];
 
 var lc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
          "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
@@ -162,7 +144,7 @@ function sendImage(recipientId, message) {
 };
 
 function sendGif(recipientId, message) {
-for(i = 0; i < 20; i++)
+for(i = 0; i < 2; i++)
 {
     message = {
         "attachment": {
