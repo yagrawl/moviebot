@@ -55,15 +55,15 @@ app.post('/webhook', function (req, res) {
         	
         		case "Hi":
         		case "hi":
-        		case "Hey":
-        			sendMessage(event.sender.id, {text: Hi[Math.floor((Math.random() * 8) - 1)]});
-        			break;
+       			case "Hey":
+       				sendMessage(event.sender.id, {text: Hi[Math.floor((Math.random() * 8) - 1)]});
+       				break;
 
-                case "movie":
-                case "Movie":
-                    getMovie(event.sender.id);
-                    sendMessage(event.sender.id, {text: "Not stuck for now"});
-                    break;
+                	case "movie":
+        		case "Movie":
+                		getMovie(event.sender.id);
+                		sendMessage(event.sender.id, {text: "Not stuck for now"});
+               			break;
 
         		case "Thanks":
         		case "thank you":
@@ -71,12 +71,12 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: "You are very welcome!"});
         			break;
 
-                case "exit":
-                case "bye":
-                case "Exit":
-                case "quit":
-                    sendMessage(event.sender.id, {text: "Goodbye! Have a nice day!"});
-                    break;    
+                	case "exit":
+                	case "bye":
+                	case "Exit":
+                	case "quit":
+                    		sendMessage(event.sender.id, {text: "Goodbye! Have a nice day!"});
+                    		break;    
                         		
         		case "Suggest A Movie":
         		case "Suggest a movie":
@@ -96,14 +96,14 @@ app.post('/webhook', function (req, res) {
         			moreMovies(event.sender.id, event.message.text);
         			break;
 
-                case "Random poster":
-                case "Random":
-                    sendImage(event.sender.id, event.message.text);
-                    break;
+                	case "Random poster":
+                	case "Random":
+                    		sendImage(event.sender.id, event.message.text);
+                    		break;
 
-                case "All gifs":
-                    sendGif(event.sender.id, event.message.text);
-                    break;
+                	case "All gifs":
+                    		sendGif(event.sender.id, event.message.text);
+                    		break;
 
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, don't get what " + "'" + event.message.text  + "'" + " means!"});
