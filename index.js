@@ -4,9 +4,8 @@ var request = require('request');
 var app = express();
 var mId = Math.floor((Math.random() * 1000) + 1);
 var APIkey = '?api_key=69c569210010a0db6bf4197759641bb1';
-var baseUrl = 'http://private-anon-226ac248b-themoviedb.apiary-mock.com/3/movie/';
+var baseUrl = 'https://api.themoviedb.org/3/movie/';
 var Murl = baseUrl + '550' + APIkey;
-var igur = 'http://img-9gag-fun.9cache.com/photo/';
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -174,11 +173,13 @@ function getMovie(recipientId) {
     }, 
         function (error, response, body) {
             console.log('Status:', response.statusCode);
-            console.log('Headers:', JSON.stringify(response.headers));
-            console.log('Response:', body);
+            //console.log('Headers:', JSON.stringify(response.headers));
+           // console.log('Response:', body);
+            //console.log('Check:', body);
+            sendMessage(recipientId, {text: Hi[Math.floor((Math.random() * 8) - 1)]} );
         });
         //var title = JSON.stringify(response.headers);
-        sendMessage(recipientId, {text: Hi[Math.floor((Math.random() * 8) - 1)]} );
+        
 
  };
 
