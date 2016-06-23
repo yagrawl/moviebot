@@ -4,8 +4,8 @@ var request = require('request');
 var app = express();
 var mId = Math.floor((Math.random() * 1000) + 1);
 var APIkey = '?api_key=69c569210010a0db6bf4197759641bb1';
-var baseUrl = 'https://api.themoviedb.org/3/movie/';
-var Murl = baseUrl + mId + APIkey;
+var baseUrl = 'http://private-anon-226ac248b-themoviedb.apiary-mock.com/3/movie/';
+var Murl = baseUrl + '550' + APIkey;
 var igur = 'http://img-9gag-fun.9cache.com/photo/';
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -103,7 +103,7 @@ app.post('/webhook', function (req, res) {
                 case "All gifs":
                     sendGif(event.sender.id, event.message.text);
                     break;
-                    
+
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, don't get what " + "'" + event.message.text  + "'" + " means!"});
         	}
@@ -174,9 +174,8 @@ function getMovie(recipientId) {
             console.log('Status:', response.statusCode);
             console.log('Headers:', JSON.stringify(response.headers));
             console.log('Response:', body);
-            sendMessage(recipientId, body.original_title);
         });
-        sendMessage(recipientId, {text: "Test"});
+        sendMessage(recipientId, {text: "Passing through!"} );
 
  };
 
