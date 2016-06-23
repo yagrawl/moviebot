@@ -102,7 +102,8 @@ app.post('/webhook', function (req, res) {
 
                 case "All gifs":
                     sendGif(event.sender.id, event.message.text);
-
+                    break;
+                    
         		default:
         			sendMessage(event.sender.id, {text: "Sorry, don't get what " + "'" + event.message.text  + "'" + " means!"});
         	}
