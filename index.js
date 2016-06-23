@@ -176,7 +176,7 @@ function getMovie(recipientId) {
             //console.log('Headers:', JSON.stringify(response.headers));
            // console.log('Response:', body);
             //console.log('Check:', body);
-            sendMessage(recipientId, {text: Hi[Math.floor((Math.random() * 8) - 1)]} );
+            sendMessage(recipientId, {text: body} );
         });
         //var title = JSON.stringify(response.headers);
         
