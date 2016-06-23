@@ -60,8 +60,8 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: Hi[Math.floor((Math.random() * 8) - 1)]});
         			break;
 
-                case "check2":
-                //case "Movie":
+                case "movie":
+                case "Movie":
                     getMovie(event.sender.id);
                     sendMessage(event.sender.id, {text: "Not stuck for now"});
                     break;
@@ -178,7 +178,7 @@ function getMovie(recipientId) {
             console.log('Response:', body);
         });
         //var title = JSON.stringify(response.headers);
-        sendMessage(recipientId, JSON.stringify(response.headers) );
+        sendMessage(recipientId, {text: Hi[Math.floor((Math.random() * 8) - 1)]} );
 
  };
 
