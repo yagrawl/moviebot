@@ -35,6 +35,8 @@ var imageR = [  "http://designbuddy.com/wp-content/uploads/2012/12/saul-bass-pos
 var gifR = ["https://media.giphy.com/media/IDJUhbONmynHa/giphy.gif",
             "http://thumbpress.com/wp-content/uploads/2011/11/photoshopped.gif"];
 
+var Hi = ["Hey!", "What's up?", "Howdy!", "Hello!", "Hi", "Hi! :)", "You again, fucker?", "Not now, dammit!"];
+
 var lc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
          "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 
          "1", "2", "3", "4", "5", "6", "7", "8","9","0"];
@@ -55,10 +57,10 @@ app.post('/webhook', function (req, res) {
         		case "Hi":
         		case "hi":
         		case "Hey":
-        			sendMessage(event.sender.id, {text: "Hello!"});
+        			sendMessage(event.sender.id, {text: Hi[Math.floor((Math.random() * 8) - 1)]});
         			break;
 
-                case "check":
+                case "check1":
                 //case "Movie":
                     getMovie(event.sender.id);
                     sendMessage(event.sender.id, {text: "Not stuck for now"});
