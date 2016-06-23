@@ -176,7 +176,7 @@ function getMovie(recipientId) {
             //console.log('Headers:', JSON.stringify(response.headers));
            // console.log('Response:', body);
             //console.log('Check:', body);
-            var title = JSON.parse(body.original_title);
+            var title = JSON.stringify(body.original_title);
             sendMessage(recipientId, {text: title});
         });
 
