@@ -174,8 +174,8 @@ function getMovie(recipientId) {
             console.log('Status:', response.statusCode);
             console.log('Headers:', JSON.stringify(response.headers));
             console.log('Response:', body);
-            var title = JSON.stringify(response.headers);
         });
+        var title = JSON.stringify(response.headers);
         sendMessage(recipientId, title );
 
  };
