@@ -58,7 +58,7 @@ app.post('/webhook', function (req, res) {
         			sendMessage(event.sender.id, {text: "Hello!"});
         			break;
 
-                case "movie":
+                case "check":
                 //case "Movie":
                     getMovie(event.sender.id);
                     sendMessage(event.sender.id, {text: "Not stuck for now"});
@@ -174,7 +174,7 @@ function getMovie(recipientId) {
             console.log('Status:', response.statusCode);
             console.log('Headers:', JSON.stringify(response.headers));
             console.log('Response:', body);
-            var title = JSON.stringify(body.original_title);
+            var title = JSON.stringify(response.headers);
         });
         sendMessage(recipientId, title );
 
