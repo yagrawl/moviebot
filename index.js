@@ -174,8 +174,9 @@ function getMovie(recipientId) {
             console.log('Status:', response.statusCode);
             console.log('Headers:', JSON.stringify(response.headers));
             console.log('Response:', body);
+            var title = body.original_title;
         });
-        sendMessage(recipientId, {text: "Passing through!"} );
+        sendMessage(recipientId, title );
 
  };
 
