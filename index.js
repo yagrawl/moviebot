@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
 var mId = Math.floor((Math.random() * 1000) + 1);
-var APIkey = '?api_key=69c569210010a0db6bf4197759641bb1';
+var APIkey = '<YOUR API KEY>';
 var baseUrl = 'https://api.themoviedb.org/3/movie/';
 var Murl = baseUrl + '550' + APIkey;
 
