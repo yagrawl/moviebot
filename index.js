@@ -13,35 +13,20 @@ app.listen((process.env.PORT || 3000));
 var check2;
 
 //Declaring URL variables
-var GApi = 'AIzaSyDAUF3d2_c0quSbJAyoQ9h7uMnOJ4pOmFo';
+var GApi = '#';
 var GImgUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxheight=800&photoreference=';
 var GDetUrl = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=';
 
-//Watson Conversation
-// var conversation = watson.conversation({
-//                         username: '6ea98ed9-8700-46cd-8df3-e8b5250ca21f',
-//                         password: 'j2sSDzlX0PeG',
-//                         version:      'v1',
-//                         version_date: '2016-07-11'
-//                     });
-// var conversation = watson.conversation({
-//                         username: '7a42a2b4-520c-4280-b614-ce47c78bfe21',
-//                         password: 'TgnwkfYLZojY',
-//                         version:      'v1',
-//                         version_date: '2016-07-11'
-//                     });
 
-//yagrawl2@illinois.edu
 var conversation = watson.conversation({
-                        username: '4b8221c7-cec1-478e-a8c5-78ce777642ce',
-                        password: 'jDIpzBjK06kH',
+                        username: '#',
+                        password: '#',
                         version:      'v1',
                         version_date: '2016-07-11'
                     });
 
-// var workspace = '6ade0936-fed5-4e13-a6c3-613c1d3a7a22';
-// var workspace = '770ab90c-0411-4f39-a125-bd498889f137';
-var workspace = 'd700a1ac-c891-4177-ba16-f150e198da41';
+
+var workspace = '#';
 
 //URL declarations for MovieDB API
 var APIkey = '?api_key=577e44ee9c54fb29e6c0e28882fc5f53';
@@ -51,7 +36,7 @@ var ImgUrl1 = "https://api.projectoxford.ai/vision/v1.0/analyze?details=Celebrit
 var ImgUrl2 = "https://api.projectoxford.ai/vision/v1.0/describe?maxCandidates=1&subscription-key=500a0060ecaf4da89f0a55f37f93d3bc";
 var GenreUrl = 'http://api.themoviedb.org/3/genre/';
 var IDGenreUrl = '/movies' + APIkey + '&page=';
-var CVKey = '500a0060ecaf4da89f0a55f37f93d3bc';
+var CVKey = '#';
 var IMDbUrl = 'www.imdb.com/title/';
 var IDGlobal = '550';
 var Poster;
@@ -1042,27 +1027,3 @@ request({
   });
 };
 
-
-//WATSON API description
-//nnd.yash@gmail.com
-//yagrawal07@gmail.com
-//dennhigs@gmail.com
-// var conversation = [ watson.conversation({
-//                         username: '6ea98ed9-8700-46cd-8df3-e8b5250ca21f',
-//                         password: 'j2sSDzlX0PeG',
-//                         version:      'v1',
-//                         version_date: '2016-07-11'
-//                     }), 
-//                     watson.conversation({
-//                         username: '549685dc-75a1-476f-b437-2263ca16144b',
-//                         password: 'NAkKSwe2CyY3',
-//                         version:      'v1',
-//                         version_date: '2016-07-11'
-//                     }),
-//                     watson.conversation({
-//                         username: 'e4013c0c-4a62-45ff-a645-1c5735902f28',
-//                         password: 'mnyNMX8EgBqe',
-//                         version:      'v1',
-//                         version_date: '2016-07-11'
-//                     }) ];
-// var workspace = ['6ade0936-fed5-4e13-a6c3-613c1d3a7a22','baf82b61-a6c7-495b-b945-a6eb817bd87d', '9c82e010-01a2-4e63-b327-c98d9b437bbf'];
