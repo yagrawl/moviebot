@@ -29,7 +29,7 @@ var conversation = watson.conversation({
 var workspace = '#';
 
 //URL declarations for MovieDB API
-var APIkey = '?api_key=577e44ee9c54fb29e6c0e28882fc5f53';
+var APIkey = '?api_key=#';
 var BaseUrl = 'https://api.themoviedb.org/3/movie/';
 var PosterUrl = 'http://image.tmdb.org/t/p/original';
 var ImgUrl1 = "https://api.projectoxford.ai/vision/v1.0/analyze?details=Celebrities&subscription-key=500a0060ecaf4da89f0a55f37f93d3bc";
