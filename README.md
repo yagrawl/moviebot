@@ -17,6 +17,8 @@ Following APIs are also used :
 * Google's Places API - Returns Theatres near a location pin
 * Microsoft's CV API - No particular reason
 
+NLP API switched from IBM Watson's conversation API to API.ai
+
 ### Usage
 It is accessible at https://m.me/moviebots. If you want to use the code for your own bot, remember to switch the API keys. For security purposes the API keys are added to the config vars on heroku so before using the obtain and change keys. Custom training exports can be found in the `NLP backup` folder.
 

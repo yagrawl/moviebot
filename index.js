@@ -9,6 +9,8 @@
 // All API keys stored in config vars on Heroku for protection purposes.
 // If you want to use this code for your own bot, get API keys from TMDB, API.ai, Google places and Microsoft CV
 
+// All the functions are working. As of 10/07/2017
+
 // Global variables for access through all functions
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -56,8 +58,6 @@ var nextTag = 2;
 // 14 - Find Cast
 // 15 - Image Info
 // 16 - Places
-
-// All the functions are working. As of 10/07/2017
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -260,7 +260,7 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
 });
 
-// Get Info of the user like name, location, 
+// Get Info of the user like name, location,
 // profile picture to create a database (future implementation)
 function getInfo(sender) {
     request({
@@ -394,7 +394,7 @@ function help(sender){
 };
 
 // Genre Based Search
-// After the genre is recognised by API.ai customed trained entity, 
+// After the genre is recognised by API.ai customed trained entity,
 // filter according to TMDb specifications and call sendTemplate
 // Also change globalvar nextTag to make sure that the next postback
 // calls a movie with the same genre (!TODO: look for a better implementation
@@ -528,7 +528,7 @@ function PeopleSearch(sender, Person){
 };
 
 // Random movie generator.
-// Call the API to return the most popular movies and 
+// Call the API to return the most popular movies and
 // randomly select one. Also keep track of the movieid
 // to receive additional details if asked by the user
 function randomMovies(sender){
@@ -606,7 +606,7 @@ function inTheatres(sender, time) {
                 {
                     var end = 18;
                 }
-                else 
+                else
                 {
                     var end = 9
                 };
