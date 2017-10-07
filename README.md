@@ -24,3 +24,6 @@ It is accessible at https://m.me/moviebots. If you want to use the code for your
 
 ### More Info
 More info can be found at https://yagrawal.com/moviebot.html
+
+### Privacy Policy
+[Link](https://termsfeed.com/privacy-policy/0d0f3b846b5f9cf808761fece52f3286)
