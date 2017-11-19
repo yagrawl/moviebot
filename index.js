@@ -59,6 +59,8 @@ var nextTag = 2;
 // 15 - Image Info
 // 16 - Places
 
+// Structure 
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
