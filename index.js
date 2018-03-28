@@ -29,7 +29,7 @@ const IMDbUrl = 'www.imdb.com/title/';
 // Computer Vision API variables
 const CV_key = process.env.CV_KEY;
 const ImgUrl1 = "https://api.projectoxford.ai/vision/v1.0/analyze?details=Celebrities&subscription-key=" + CV_key;
-const ImgUrl2 = "https://api.projectoxford.ai/vision/v1.0/describe?maxCandidates=1&subscription-key=" + CV_key;
+const ImgUrl2 = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0&subscription-key=" + CV_key;
 
 // Google Places API variables
 const GApi = process.env.G_API;
@@ -59,7 +59,7 @@ var nextTag = 2;
 // 15 - Image Info
 // 16 - Places
 
-// Structure 
+// Structure
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
