@@ -4,14 +4,11 @@ const apiaiApp = require('apiai')(process.env.APIAI_API_KEY);
 import * as template from './templates.js'
 import * as movie from './movie.js'
 
-let movieId;
-let posterUrl;
-
 export let message = function(sender, message) {
     senderAction(sender);
     switch(message) {
         case "Details":
-            movie.details(sender, movieId);
+            movie.details(sender);
             break;
 
         case "See Poster":
@@ -20,9 +17,7 @@ export let message = function(sender, message) {
 
         case "Next":
         default:
-            let dets = movie.random(sender);
-            movieId = dets[0];
-            posterUrl = dets[1];
+            movie.random(sender);
             break;
     }
 };
@@ -32,11 +27,6 @@ export let attachment = function(sender, attachment) {
 };
 
 export let postback = function(sender, postback) {
-    senderAction(sender);
-};
-
-export let details = function (sender) {
-    console.log(`Getting ID to ${movieId} @details`);
     senderAction(sender);
 };
 

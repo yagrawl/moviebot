@@ -9,6 +9,9 @@ const TMDB_BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const IMDB_BASE_URL = 'www.imdb.com/title/';
 
+let movieId;
+let posterUrl;
+
 /**
  * Random movie generator.
  * Call the API to return the most popular movies and
@@ -36,11 +39,11 @@ export let random = function (sender) {
         else {
 
             let i = Math.floor((Math.random() * 19) + 1);
-            let movieId = Movies.results[i].id.toString();
+            movieId = Movies.results[i].id.toString();
             console.log(`Setting ID to ${movieId} @random`);
             let title = Movies.results[i].title;
             let year = Movies.results[i].release_date.slice(0,4);
-            let posterUrl = POSTER_BASE_URL + Movies.results[i].poster_path;
+            posterUrl = POSTER_BASE_URL + Movies.results[i].poster_path;
             let overview = Movies.results[i].overview;
 
             if(overview.indexOf('.') !== -1){
@@ -59,17 +62,15 @@ export let random = function (sender) {
             setTimeout(function() {
                 template.sendQuickButton(sender, overview);
             }, 3000);
-
-            return [movieId, posterUrl];
         }
     });
 };
 
-export let details = function (sender, id) {
-    console.log(`Getting ID to ${id} @movie.details`);
+export let details = function (sender) {
+    console.log(`Getting ID to ${movieId} @movie.details`);
     request({
         method: 'GET',
-        url: TMDB_BASE_URL + id + TMDB_API_KEY,
+        url: TMDB_BASE_URL + movieId + TMDB_API_KEY,
         headers: {
             'Accept': 'application/json'
         }
