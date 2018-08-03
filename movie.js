@@ -43,7 +43,7 @@ export let random = function (sender) {
                 let elements = [{
                         "title": Movies.results[i].title,
                         "subtitle": Movies.results[i].overview,
-                        "image_url": PosterUrl + Movies.results[i].poster_path,
+                        "image_url": POSTER_BASE_URL + Movies.results[i].poster_path,
                         "buttons":
                             [{
                                 "type": "postback",
