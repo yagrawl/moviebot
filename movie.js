@@ -38,11 +38,12 @@ export let random = function (sender) {
                 let IDPop = Movies.results[i].id.toString();
                 let IDGlobal = IDPop;
                 let Poster = POSTER_BASE_URL + Movies.results[i].poster_path;
+                let overview = Movies.results[i].overview;
                 console.log('Movie ID: ', IDPop);
                 console.log('Movie: ', Movies.results[i].title);
                 let elements = [{
                         "title": Movies.results[i].title,
-                        "subtitle": Movies.results[i].overview,
+                        "subtitle": Movies.results[i].release_date.slice(0,4),
                         "image_url": POSTER_BASE_URL + Movies.results[i].poster_path,
                         "buttons":
                             [{
@@ -60,6 +61,7 @@ export let random = function (sender) {
                             }]
                     }];
                 template.sendTemplate(sender, elements);
+                template.sendQuickButton(sender, overview);
             }
         });
 };

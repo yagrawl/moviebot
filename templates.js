@@ -82,14 +82,14 @@ export let sendButton = function (sender, title, buttons) {
     sendMessage(sender, message);
 };
 
-export let sendQuickButton = function (sender) {
+export let sendQuickButton = function (sender, text) {
     let message = {
-        "text": "Here is a quick reply!",
+        "text": text,
         "quick_replies":[
             {
               "content_type":"text",
-              "title":"YES",
-              "payload":"yes",
+              "title":"Next",
+              "payload":"Next",
             }
         ]
     };
