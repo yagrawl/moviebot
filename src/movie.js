@@ -61,7 +61,7 @@ export let random = function (sender) {
             template.sendTemplateGeneric(sender, elements);
             setTimeout(function() {
                 template.sendQuickButton(sender, overview);
-            }, 3000);
+            }, 1500);
         }
     });
 };
@@ -125,6 +125,10 @@ export let details = function (sender) {
                 setTimeout(function() {
                         template.sendTemplateList(sender, elements, buttons);
                 }, 3000);
+
+                setTimeout(function() {
+                        template.sendQuickButtonNext(sender, "More?");
+                }, 1500);
             }
         });
 }
@@ -145,4 +149,7 @@ export let cast = function(id) {
 
 export let poster = function(sender) {
     template.sendImage(sender, posterUrl);
+    setTimeout(function() {
+            template.sendQuickButtonNext(sender, "More?");
+    }, 1500);
 }

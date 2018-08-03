@@ -122,3 +122,18 @@ export let sendQuickButton = function (sender, text) {
 
     sendMessage(sender, message);
 };
+
+export let sendQuickButtonNext = function (sender, text) {
+    let message = {
+        "text": text,
+        "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"Next",
+              "payload":"Next",
+          }
+        ]
+    };
+
+    sendMessage(sender, message);
+};
