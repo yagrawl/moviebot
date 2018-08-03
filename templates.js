@@ -84,6 +84,7 @@ export let sendButton = function (sender, title, buttons) {
 export let sendQuickButton = function (sender) {
   console.log('sending quick button');
   let message = {
+              "text": "Here is a quick reply!",
               "quick_replies":[
                 {
                   "content_type":"text",
