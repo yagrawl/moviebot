@@ -1,7 +1,25 @@
 const request = require('request');
 
+export let sendSenderAction = function (sender, action) {
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json: {
+        recipient: {id: sender},
+        sender_action: action
+    }
+  }, function(error, response, body) {
+      if (error) {
+          console.log('Error sending message: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
+  });
+}
+
 // generic function sending messages
-export function sendMessage(sender, message) {
+export let sendMessage = function (sender, message) {
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
@@ -20,7 +38,7 @@ export function sendMessage(sender, message) {
 };
 
 //Generic function sending images
-export function sendImage(sender, url) {
+export let sendImage = function (sender, url) {
     message = {
         "attachment": {
             "type": "image",
@@ -33,7 +51,7 @@ export function sendImage(sender, url) {
 };
 
 //Generic function sending templates
-export function sendTemplate(sender, elements) {
+export let sendTemplate = function (sender, elements) {
     message = {
                 "attachment": {
                     "type": "template",
@@ -45,11 +63,10 @@ export function sendTemplate(sender, elements) {
             };
 
     sendMessage(sender, message);
-
 };
 
 //Generic function sending buttons
-export function sendButton(sender, title, buttons) {
+export let sendButton = function (sender, title, buttons) {
     message = {
                 "attachment": {
                     "type": "template",
@@ -63,3 +80,16 @@ export function sendButton(sender, title, buttons) {
 
     sendMessage(sender, message);
 };
+
+export let sendQuickButton = function (sender) {
+  message = {
+              "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"YES",
+                  "payload":"yes",
+                }
+          };
+
+  sendMessage(sender, message);
+}
