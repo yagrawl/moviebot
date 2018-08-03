@@ -89,6 +89,7 @@ export let sendQuickButton = function (sender) {
                   "title":"YES",
                   "payload":"yes",
                 }
+              ]
           };
 
   sendMessage(sender, message);
