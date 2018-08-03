@@ -20,7 +20,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
-import sendMessage from './templates.js'
+import {sendMessage} from './templates.js'
 
 // API.ai email : moviebot3
 const apiaiApp = require('apiai')(process.env.APIAI_API_KEY);
