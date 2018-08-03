@@ -66,6 +66,7 @@ app.post('/webhook', (req, res) => {
       }
     } else if (event.postback && event.postback.payload) {
         if(event.postback.payload == 'yes') {
+          console.log('here in payload');
           template.sendMessage(sender, {text: 'POSTBACKK'});
         }
         //handlePostback(sender, event.postback);
