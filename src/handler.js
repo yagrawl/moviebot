@@ -11,9 +11,7 @@ export let message = function(sender, message) {
     senderAction(sender);
     switch(message) {
         case "Details":
-            let dets = details(sender);
-            movieId = dets[0];
-            posterUrl = dets[1];
+            movie.details(sender, movieId);
             break;
 
         case "See Poster":
@@ -22,7 +20,9 @@ export let message = function(sender, message) {
 
         case "Next":
         default:
-            movie.random(sender);
+            let dets = movie.random(sender);
+            movieId = dets[0];
+            posterUrl = dets[1];
             break;
     }
 };
@@ -38,7 +38,6 @@ export let postback = function(sender, postback) {
 export let details = function (sender) {
     console.log(`Getting ID to ${movieId} @details`);
     senderAction(sender);
-    movie.details(sender, movieId);
 };
 
 let senderAction = function(sender) {

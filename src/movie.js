@@ -66,7 +66,7 @@ export let random = function (sender) {
 };
 
 export let details = function (sender, id) {
-    console.log(`Getting ID to ${movieId} @movie.details`);
+    console.log(`Getting ID to ${id} @movie.details`);
     request({
         method: 'GET',
         url: TMDB_BASE_URL + id + TMDB_API_KEY,
