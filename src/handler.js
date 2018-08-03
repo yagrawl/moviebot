@@ -9,24 +9,10 @@ export let message = function(sender, message) {
     if(message === 'Details') {
         movie.details(sender);
     } else if(message === 'See Poster') {
-        template.sendImage(sender, movie.posterUrl);
+        movie.poster(sender);
     } else if(message === 'Next' || message === 'Hi') {
         movie.random(sender);
     }
-    // switch(message) {
-    //     case "Details":
-    //         movie.details(sender);
-    //         break;
-    //
-    //     case "See Poster":
-    //         template.sendImage(sender, posterUrl);
-    //         break;
-    //
-    //     case "Next":
-    //     default:
-    //         movie.random(sender);
-    //         break;
-    // }
 };
 
 export let attachment = function(sender, attachment) {

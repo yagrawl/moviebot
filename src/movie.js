@@ -87,18 +87,33 @@ export let details = function (sender) {
                 let tag = Movie.tagline;
                 let poster = POSTER_BASE_URL + Movie.poster_path;
                 let imdb = IMDB_BASE_URL + Movie.imdb_id;
-                console.log(imdb);
-                console.log(title);
+                let cast = cast(id);
+
                 let elements = [{
                         "title": title,
                         "subtitle": tag,
                         "image_url": poster,
-                    }, {
-                        "title": "random",
-                        "subtitle": "tag",
-                        "image_url": "http://i.imgur.com/Q05B72u.png",
-                    }
-                ];
+                    }];
+
+                cast.then(credits => {
+                    let castNo = credits.cast.length;
+                    if(castNo >= 3) { castNo = 3; }
+
+                    for(let i = 0; i < castNo; i++)
+                    {
+                        if(typeof credits.cast[i].profile_path !== 'undefined')
+                        {
+                            var CastProfile = POSTER_BASE_URL + credits.cast[i].profile_path ;
+                        }
+                        else{
+                            var CastProfile = "http://i.imgur.com/uO5oB4q.jpg";
+                        }
+                        elements.push({"title": credits.cast[i].character,
+                                    "subtitle": credits.cast[i].name,
+                                    "image_url": CastProfile
+                                });
+                   }
+                });
 
                 let buttons = [
                       {
@@ -110,4 +125,22 @@ export let details = function (sender) {
                 template.sendTemplateList(sender, elements, buttons);
             }
         });
+}
+
+export let cast = function(id) {
+    return new Promise((resolve, reject) => {
+        request({
+            method: 'GET',
+            url: TMDB_BASE_URL + id + '/credits' + TMDB_API_KEY,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }, function (error, response, body) {
+                resolve(JSON.parse(body));
+        }
+    )};
+)};
+
+export let poster = function(sender) {
+    template.sendImage(sender, posterUrl);
 }
