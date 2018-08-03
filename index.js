@@ -18,6 +18,8 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
+import sendMessage from './templates'
+
 // API.ai email : moviebot3
 const apiaiApp = require('apiai')(process.env.APIAI_API_KEY);
 
@@ -50,27 +52,20 @@ app.post('/webhook', (req, res) => {
   for (i = 0; i < events.length; i++) {
     let event = events[i];
     let sender = event.sender.id;
-    if (event.message && event.message.text) {
-      sendMessage(sender, {text: 'BOT DOWN'});
+
+    if(event.message) {
+      if (event.message.text) {
+        handleTextMessage(sender, event.message);
+      } else if (event.message.attachments) {
+        //handleAttachmentMessage(sender, event.message);
+      }
+    } else if (event.postback && event.postback.payload) {
+        //handlePostback(sender, event.postback);
     }
   }
+  res.sendStatus(200);
 });
 
-// generic function sending messages
-function sendMessage(sender, message) {
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: 'POST',
-    json: {
-        recipient: {id: sender},
-        message: message,
-    }
-  }, function(error, response, body) {
-      if (error) {
-          console.log('Error sending message: ', error);
-      } else if (response.body.error) {
-          console.log('Error: ', response.body.error);
-      }
-  });
-};
+let handleTextMessage = function (sender, message) {
+  sendMessage(sender, {text: 'BOT TESTING'});
+}
