@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Moviebot v.2.0
  * Author : Yash Agrawal (https://yagrawal.com)
@@ -18,7 +20,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
-import sendMessage from './templates'
+import sendMessage from './templates.js'
 
 // API.ai email : moviebot3
 const apiaiApp = require('apiai')(process.env.APIAI_API_KEY);
