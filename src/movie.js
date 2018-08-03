@@ -128,17 +128,15 @@ export let details = function (sender) {
 }
 
 export let cast = function(id) {
-    return new Promise((resolve, reject) => {
-        request({
-            method: 'GET',
-            url: TMDB_BASE_URL + id + '/credits' + TMDB_API_KEY,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }, function (error, response, body) {
+    return new Promise((resolve, reject) => {}
+    request({
+        method: 'GET',
+        url: TMDB_BASE_URL + id + '/credits' + TMDB_API_KEY,
+        headers: {
+            'Accept': 'application/json'
+        }}, function (error, response, body) {
                 resolve(JSON.parse(body));
-        }
-    )};
+        });
 )};
 
 export let poster = function(sender) {
