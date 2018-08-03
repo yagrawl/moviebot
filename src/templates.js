@@ -67,14 +67,15 @@ export let sendTemplateGeneric = function (sender, elements) {
 };
 
 //List function sending templates
-export let sendTemplateList = function (sender, elements) {
+export let sendTemplateList = function (sender, elements, buttons) {
     let message = {
         "attachment": {
             "type": "template",
             "payload": {
                 "template_type": "list",
                 "top_element_style": "large",
-                "elements": elements
+                "elements": elements,
+                "buttons": buttons
             }
         }
     };

@@ -40,6 +40,7 @@ export let random = function (sender) {
 
             let i = Math.floor((Math.random() * 19) + 1);
             movieId = Movies.results[i].id.toString();
+            console.log(`Setting ID to ${movieId} @random`);
             let title = Movies.results[i].title;
             let year = Movies.results[i].release_date.slice(0,4);
             posterUrl = POSTER_BASE_URL + Movies.results[i].poster_path;
@@ -66,6 +67,7 @@ export let random = function (sender) {
 };
 
 export let details = function (sender, id) {
+    console.log(`Getting ID to ${movieId} @movie.details`);
     request({
         method: 'GET',
         url: TMDB_BASE_URL + id + TMDB_API_KEY,
@@ -84,21 +86,28 @@ export let details = function (sender, id) {
                 let id = Movie.id;
                 let tag = Movie.tagline;
                 let poster = POSTER_BASE_URL + Movie.poster_path;
-                let imdb = Movie.imdb_id;
+                let imdb = IMDB_BASE_URL + Movie.imdb_id;
                 console.log(imdb);
                 console.log(title);
                 let elements = [{
-                    "title": title,
-                    "subtitle": tag,
-                    "image_url": poster,
-                }, {
-                    "title": "random",
-                    "subtitle": "tag",
-                    "image_url": "http://i.imgur.com/Q05B72u.png",
-                }
-              ];
+                        "title": title,
+                        "subtitle": tag,
+                        "image_url": poster,
+                    }, {
+                        "title": "random",
+                        "subtitle": "tag",
+                        "image_url": "http://i.imgur.com/Q05B72u.png",
+                    }
+                ];
 
-                template.sendTemplateList(sender, elements);
+                let buttons = [
+                      {
+                          "type": "web_url",
+                          "url": imdb,
+                          "title": "IMDB"
+                    }];
+
+                template.sendTemplateList(sender, elements, buttons);
             }
         });
 }

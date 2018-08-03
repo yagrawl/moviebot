@@ -32,7 +32,7 @@ export let postback = function(sender, postback) {
 };
 
 export let details = function (sender) {
-    console.log('HERE in details in handler');
+    console.log(`Getting ID to ${movie.movieId} @details`);
     senderAction(sender);
     movie.details(sender, movie.movieId);
 };
