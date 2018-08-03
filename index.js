@@ -21,15 +21,7 @@ const request = require('request');
 const app = express();
 
 import * as template from './templates.js'
-
-// API.ai email : moviebot3
-const apiaiApp = require('apiai')(process.env.APIAI_API_KEY);
-
-// The MovieDB API variables
-const TMDB_API_KEY = '?api_key=' + process.env.TMDB_API_KEY;
-const MOVIE_INFO_BASE_URL = 'https://api.themoviedb.org/3/movie/';
-const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
-const IMDB_BASE_URL = 'www.imdb.com/title/';
+import * as handler from './handler.js'
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -37,50 +29,33 @@ app.listen((process.env.PORT || 3000));
 
 // Server frontpage
 app.get('/', (req, res) => {
-  res.send('This is TestBot Server');
+    res.send('This is TestBot Server');
 });
 
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
-  if (req.query['hub.verify_token'] === 'testbot_verify_token') {
-    res.send(req.query['hub.challenge']);
-  } else {
-    res.send('Invalid verify token');
-  }
+    if (req.query['hub.verify_token'] === 'testbot_verify_token') {
+        res.send(req.query['hub.challenge']);
+    } else {
+        res.send('Invalid verify token');
+    }
 });
 
 app.post('/webhook', (req, res) => {
-  let events = req.body.entry[0].messaging;
-  for (let i = 0; i < events.length; i++) {
-    let event = events[i];
-    let sender = event.sender.id;
+    let events = req.body.entry[0].messaging;
+    for (let i = 0; i < events.length; i++) {
+        let event = events[i];
+        let sender = event.sender.id;
 
-    if(event.message) {
-      if (event.message.text) {
-        template.sendSenderAction(sender, "mark_seen");
-        template.sendSenderAction(sender, "typing_on");
-        //handleTextMessage(sender, event.message);
-        template.sendQuickButton(sender);
-        if(event.message.text == 'yes') {
-          template.sendMessage(sender, {text: 'SMALL Y'});
+        if(event.message) {
+            if (event.message.text) {
+                handler.message(sender, event.message.text);
+            } else if (event.message.attachments) {
+                handler.attachment(sender, event.message.attachments);
+            }
+        } else if (event.postback && event.postback.payload) {
+            handler.postback(sender, event.postback.payload);
         }
-        if(event.message.text == 'YES') {
-          template.sendMessage(sender, {text: 'LARGE Y'});
-        }
-      } else if (event.message.attachments) {
-        //handleAttachmentMessage(sender, event.message);
-      }
-    } else if (event.postback && event.postback.payload) {
-        if(event.postback.payload == 'yes') {
-          console.log('here in payload');
-          template.sendMessage(sender, {text: 'POSTBACKK'});
-        }
-        //handlePostback(sender, event.postback);
     }
-  }
-  res.sendStatus(200);
+    res.sendStatus(200);
 });
-
-let handleTextMessage = function (sender, message) {
-  template.sendMessage(sender, {text: 'BOT TESTING'});
-}
