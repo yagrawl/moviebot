@@ -61,7 +61,9 @@ export let random = function (sender) {
                             }]
                     }];
                 template.sendTemplate(sender, elements);
-                template.sendQuickButton(sender, overview);
+                setTimeout(function() {
+                    template.sendQuickButton(sender, overview);
+                }, 3000);
             }
         });
 };
