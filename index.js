@@ -57,6 +57,8 @@ app.post('/webhook', (req, res) => {
 
     if(event.message) {
       if (event.message.text) {
+        sendSenderAction(sender, "mark_seen");
+        sendSenderAction(sender, "typing_on");
         handleTextMessage(sender, event.message);
       } else if (event.message.attachments) {
         //handleAttachmentMessage(sender, event.message);
@@ -67,6 +69,24 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
+
+let sendSenderAction = function (sender, action) {
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json: {
+        recipient: {id: sender},
+    },
+    "sender_action": action
+  }, function(error, response, body) {
+      if (error) {
+          console.log('Error sending message: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
+  });
+}
 
 let handleTextMessage = function (sender, message) {
   sendMessage(sender, {text: 'BOT TESTING'});
