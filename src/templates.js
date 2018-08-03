@@ -73,7 +73,7 @@ export let sendTemplateList = function (sender, elements) {
             "type": "template",
             "payload": {
                 "template_type": "list",
-                "top_element_type": "compact",
+                "top_element_style": "large",
                 "elements": elements
             }
         }
