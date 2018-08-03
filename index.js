@@ -53,6 +53,7 @@ app.post('/webhook', (req, res) => {
     if (event.message && event.message.text) {
       sendMessage(sender, {text: 'BOT DOWN'});
     }
+  }
 });
 
 // generic function sending messages
