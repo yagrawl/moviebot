@@ -9,7 +9,7 @@ const TMDB_BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const IMDB_BASE_URL = 'www.imdb.com/title/';
 
-export let movieID;
+export let movieId;
 
 /**
  * Random movie generator.

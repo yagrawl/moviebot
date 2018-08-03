@@ -22,7 +22,7 @@ export let postback = function(sender, postback) {
 export let details = function (sender) {
     senderAction(sender);
     try {
-        template.sendMessage(sender, {text: movie.movieID});
+        template.sendMessage(sender, {text: movie.movieId});
     } catch (error) {
         template.sendMessage(sender, {text: 'No Movie ID'});
     }
