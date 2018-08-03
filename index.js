@@ -59,7 +59,7 @@ app.post('/webhook', (req, res) => {
       if (event.message.text) {
         template.sendSenderAction(sender, "mark_seen");
         template.sendSenderAction(sender, "typing_on");
-        handleTextMessage(sender, event.message);
+        //handleTextMessage(sender, event.message);
         template.sendQuickButton(sender);
       } else if (event.message.attachments) {
         //handleAttachmentMessage(sender, event.message);
