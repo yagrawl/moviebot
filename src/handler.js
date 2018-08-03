@@ -18,7 +18,8 @@ export let message = function(sender, message) {
 
         case "Next":
         default:
-        movie.random(sender);
+            movie.random(sender);
+            break;
     }
 };
 
