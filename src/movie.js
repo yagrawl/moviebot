@@ -10,6 +10,7 @@ const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const IMDB_BASE_URL = 'www.imdb.com/title/';
 
 export let movieId;
+export let posterUrl;
 
 /**
  * Random movie generator.
@@ -41,7 +42,7 @@ export let random = function (sender) {
             movieId = Movies.results[i].id.toString();
             let title = Movies.results[i].title;
             let year = Movies.results[i].release_date.slice(0,4);
-            let poster = POSTER_BASE_URL + Movies.results[i].poster_path;
+            posterUrl = POSTER_BASE_URL + Movies.results[i].poster_path;
             let overview = Movies.results[i].overview;
 
             if(overview.indexOf('.') !== -1){
@@ -53,7 +54,7 @@ export let random = function (sender) {
             let elements = [{
                     "title": title,
                     "subtitle": year,
-                    "image_url": poster,
+                    "image_url": posterUrl,
                 }];
 
             template.sendTemplateGeneric(sender, elements);
@@ -84,6 +85,8 @@ export let details = function (sender, id) {
                 let tag = Movie.tagline;
                 let poster = POSTER_BASE_URL + Movie.poster_path;
                 let imdb = Movie.imdb_id;
+                console.log(imdb);
+                console.log(title);
                 let elements = [{
                     "title": title,
                     "subtitle": tag,

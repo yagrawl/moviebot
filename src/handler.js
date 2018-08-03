@@ -13,6 +13,7 @@ export let message = function(sender, message) {
             break;
 
         case "See Poster":
+            template.sendImage(sender, movie.posterUrl);
             break;
 
         case "Next":
@@ -30,6 +31,7 @@ export let postback = function(sender, postback) {
 };
 
 export let details = function (sender) {
+    console.log('HERE in details in handler');
     senderAction(sender);
     movie.details(sender, movie.movieId);
 };
