@@ -39,6 +39,11 @@ export let random = function (sender) {
                 let IDGlobal = IDPop;
                 let Poster = POSTER_BASE_URL + Movies.results[i].poster_path;
                 let overview = Movies.results[i].overview;
+                if(overview.indexOf('.') !== -1){
+                    overview = overview.slice(0, overview.indexOf('.'));
+                } else {
+                    overview = overview.slice(0, 30);
+                }
                 console.log('Movie ID: ', IDPop);
                 console.log('Movie: ', Movies.results[i].title);
                 let elements = [{
