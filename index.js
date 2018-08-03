@@ -1,15 +1,17 @@
-// Moviebot v.2.0
-// Author : Yash Agrawal (https://yagrawal.com)
-// The following is a script based code for Moviebot accessible at https://m.me/moviebots
-// It uses Google's API.ai for NLP and TMDb API for movie data. Also leverages microsoft's CV API
-// (for users that tried to break the bot using images) and finally, Google's places API to suggest
-// nearby theatres
+/**
+ * Moviebot v.2.0
+ * Author : Yash Agrawal (https://yagrawal.com)
+ * The following is a script based code for Moviebot accessible at https://m.me/moviebots
+ * It uses Google's API.ai for NLP and TMDb API for movie data. Also leverages microsoft's CV API
+ * (for users that tried to break the bot using images) and finally, Google's places API to suggest
+ * nearby theatres
+ */
 
-// Hosted on heroku (email : yagrawl2@gmail.com)
-// All API keys stored in config vars on Heroku for protection purposes.
-// If you want to use this code for your own bot, get API keys from TMDB, API.ai, Google places and Microsoft CV
-
-// All the functions are working. As of 10/07/2017
+/**
+ * Hosted on heroku (email : yagrawl2@gmail.com)
+ * All API keys stored in config vars on Heroku for protection purposes.
+ * If you want to use this code for your own bot, get API keys from TMDB, API.ai, Google places and Microsoft CV
+ */
 
 // Global variables for access through all functions
 const express = require('express');
@@ -29,7 +31,7 @@ const IMDbUrl = 'www.imdb.com/title/';
 // Computer Vision API variables
 const CV_key = process.env.CV_KEY;
 const ImgUrl1 = "https://api.projectoxford.ai/vision/v1.0/analyze?details=Celebrities&subscription-key=" + CV_key;
-const ImgUrl2 = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0&subscription-key=" + CV_key;
+const ImgUrl2 = "https://api.projectoxford.ai/vision/v1.0/describe?maxCandidates=1&subscription-key=" + CV_key;
 
 // Google Places API variables
 const GApi = process.env.G_API;
@@ -41,25 +43,29 @@ let imgSearch = 1;
 var Data = {};
 var nextTag = 2;
 
-// Code arrangement
-// 01 - Facebook post method.
-// 02 - Switches + API.AI
-// 03 - getInfo
-// 04 - sendFunctions
-// 05 - greeting
-// 06 - Help
-// 07 - Genre Search
-// 08 - People Search
-// 09 - Random Movies
-// 10 - In Theatre
-// 11 - Similar Movies
-// 12 - Info by ID
-// 13 - Search
-// 14 - Find Cast
-// 15 - Image Info
-// 16 - Places
-
-// Structure
+/**
+ * Code arrangement
+ * 01 - Facebook post method.
+ * 02 - Switches + API.AI
+ * 03 - getInfo
+ * 04 - sendFunctions
+ * 05 - greeting
+ * 06 - Help
+ * 07 - Genre Search
+ * 08 - People Search
+ * 09 - Random Movies
+ * 10 - In Theatre
+ * 11 - Similar Movies
+ * 12 - Info by ID
+ * 13 - Search
+ * 14 - Find Cast
+ * 15 - Image Info
+ * 16 - Places
+ *
+ * Structure - 1
+ *
+ * All the functions are working. As of 10/07/2017
+ */
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -79,10 +85,12 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-// Main dispatcher fucntion. When it receives an event call from the user
-// it sends the message as a query to a customed trained API.ai NLP model
-// and based on the received intent calls the necessary functions.
-// Also handles postbacks and media
+/**
+ * Main dispatcher fucntion. When it receives an event call from the user
+ * it sends the message as a query to a customed trained API.ai NLP model
+ * and based on the received intent calls the necessary functions.
+ * Also handles postbacks and media
+ */
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
@@ -262,8 +270,10 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
 });
 
-// Get Info of the user like name, location,
-// profile picture to create a database (future implementation)
+/**
+ * Get Info of the user like name, location,
+ * profile picture to create a database (future implementation)
+ */
 function getInfo(sender) {
     request({
         url: 'https://graph.facebook.com/v2.6/'+ sender +'?fields=first_name,last_name,profile_pic,locale,timezone,gender',
@@ -395,12 +405,14 @@ function help(sender){
 
 };
 
-// Genre Based Search
-// After the genre is recognised by API.ai customed trained entity,
-// filter according to TMDb specifications and call sendTemplate
-// Also change globalvar nextTag to make sure that the next postback
-// calls a movie with the same genre (!TODO: look for a better implementation
-// than polluting global scope)
+/**
+ * Genre Based Search
+ * After the genre is recognised by API.ai customed trained entity,
+ * filter according to TMDb specifications and call sendTemplate
+ * Also change globalvar nextTag to make sure that the next postback
+ * calls a movie with the same genre (!TODO: look for a better implementation
+ * than polluting global scope)
+ */
 function GenreSearch(sender, genre){
 
     var GenreUrl = 'http://api.themoviedb.org/3/genre/';
@@ -483,10 +495,12 @@ function GenreSearch(sender, genre){
 
 };
 
-// Person based Search
-// Searches for movies by a particular person as recognised by API.ai's
-// people entity. Implemented because a lot of users searched for Quentin Tarantino
-// TODO : Add additional checks. Sensitive area
+/**
+ * Person based Search
+ * Searches for movies by a particular person as recognised by API.ai's
+ * people entity. Implemented because a lot of users searched for Quentin Tarantino
+ * TODO : Add additional checks. Sensitive area
+ */
 function PeopleSearch(sender, Person){
     request({
         method: 'GET',
@@ -529,10 +543,12 @@ function PeopleSearch(sender, Person){
         });
 };
 
-// Random movie generator.
-// Call the API to return the most popular movies and
-// randomly select one. Also keep track of the movieid
-// to receive additional details if asked by the user
+/**
+ * Random movie generator.
+ * Call the API to return the most popular movies and
+ * randomly select one. Also keep track of the movieid
+ * to receive additional details if asked by the user
+ */
 function randomMovies(sender){
 
     let id = (Math.floor((Math.random() * 30) + 1)).toString();
@@ -583,8 +599,10 @@ function randomMovies(sender){
         });
 };
 
-// Current movies
-// Return a list of current movies in the theatres
+/**
+ * Current movies
+ * Return a list of current movies in the theatres
+ */
 function inTheatres(sender, time) {
     request({
         method: 'GET',
