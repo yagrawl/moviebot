@@ -10,7 +10,9 @@ export let message = function(sender, message) {
         movie.details(sender);
     } else if(message === 'See Poster') {
         movie.poster(sender);
-    } else if(message === 'Next' || message === 'Hi') {
+    } else if(message === 'Next') {
+        movie.random(sender);
+    } else {
         movie.random(sender);
     }
 };

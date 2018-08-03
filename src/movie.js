@@ -128,7 +128,7 @@ export let details = function (sender) {
 
                 setTimeout(function() {
                         template.sendQuickButtonNext(sender, "More?");
-                }, 1500);
+                }, 4500);
             }
         });
 }
