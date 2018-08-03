@@ -59,9 +59,9 @@ export let random = function (sender) {
             setTimeout(function() {
                 template.sendQuickButton(sender, overview);
             }, 3000);
-        }
 
-        return [movieId, posterUrl];
+            return [movieId, posterUrl];
+        }
     });
 };
 
