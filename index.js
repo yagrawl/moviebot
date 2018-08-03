@@ -20,7 +20,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
-import {sendMessage} from './templates.js'
+import * as template from './templates.js'
 
 // API.ai email : moviebot3
 const apiaiApp = require('apiai')(process.env.APIAI_API_KEY);
@@ -59,7 +59,7 @@ app.post('/webhook', (req, res) => {
       if (event.message.text) {
         sendSenderAction(sender, "mark_seen");
         sendSenderAction(sender, "typing_on");
-        setInterval(handleTextMessage(sender, event.message), 3000);
+        handleTextMessage(sender, event.message);
       } else if (event.message.attachments) {
         //handleAttachmentMessage(sender, event.message);
       }
@@ -77,8 +77,8 @@ let sendSenderAction = function (sender, action) {
     method: 'POST',
     json: {
         recipient: {id: sender},
-    },
-    "sender_action": action
+        sender_action: action
+    }
   }, function(error, response, body) {
       if (error) {
           console.log('Error sending message: ', error);
@@ -89,5 +89,5 @@ let sendSenderAction = function (sender, action) {
 }
 
 let handleTextMessage = function (sender, message) {
-  sendMessage(sender, {text: 'BOT TESTING'});
+  template.sendMessage(sender, {text: 'BOT TESTING'});
 }
