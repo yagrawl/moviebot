@@ -122,7 +122,9 @@ export let details = function (sender) {
                           "title": "IMDB"
                     }];
 
-                template.sendTemplateList(sender, elements, buttons);
+                setTimeout(function() {
+                        template.sendTemplateList(sender, elements, buttons);
+                }, 3000);
             }
         });
 }
