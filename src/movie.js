@@ -151,5 +151,5 @@ export let poster = function(sender) {
     template.sendImage(sender, posterUrl);
     setTimeout(function() {
             template.sendQuickButtonNext(sender, "More?");
-    }, 1500);
+    }, 2500);
 }

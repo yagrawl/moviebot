@@ -23,6 +23,13 @@ export let attachment = function(sender, attachment) {
 
 export let postback = function(sender, postback) {
     senderAction(sender);
+    if(message === 'Random Movie') {
+        movie.random(sender);
+    } else if(message === 'Help') {
+        template.sendMessage(sender, {text: "Just say 'Hi' and get movie recommendations :) "})
+    } else {
+        movie.random(sender);
+    }
 };
 
 let senderAction = function(sender) {
