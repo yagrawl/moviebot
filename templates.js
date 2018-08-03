@@ -82,6 +82,7 @@ export let sendButton = function (sender, title, buttons) {
 };
 
 export let sendQuickButton = function (sender) {
+  console.log('sending quick button');
   let message = {
               "quick_replies":[
                 {
