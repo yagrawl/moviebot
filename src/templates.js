@@ -68,6 +68,7 @@ export let sendTemplateGeneric = function (sender, elements) {
 
 //List function sending templates
 export let sendTemplateList = function (sender, elements, buttons) {
+    console.log('Templating');
     let message = {
         "attachment": {
             "type": "template",

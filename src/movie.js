@@ -88,7 +88,7 @@ export let details = function (sender) {
                 let poster = POSTER_BASE_URL + Movie.poster_path;
                 let imdb = IMDB_BASE_URL + Movie.imdb_id;
                 let moviecast = cast(id);
-
+                console.log('Sent Promise');
                 let elements = [{
                         "title": title,
                         "subtitle": tag,
@@ -98,7 +98,7 @@ export let details = function (sender) {
                 moviecast.then(credits => {
                     let castNo = credits.cast.length;
                     if(castNo >= 3) { castNo = 3; }
-
+                    console.log(credits.cast[0].character)
                     for(let i = 0; i < castNo; i++)
                     {
                         if(typeof credits.cast[i].profile_path !== 'undefined')
@@ -111,7 +111,7 @@ export let details = function (sender) {
                         elements.push({"title": credits.cast[i].character,
                                     "subtitle": credits.cast[i].name,
                                     "image_url": CastProfile
-                                });
+                        });
                    }
                 });
 
@@ -135,6 +135,7 @@ export let cast = function(id) {
             headers: {
                 'Accept': 'application/json'
             }}, function (error, response, body) {
+                    console.log('Resolved Promise');
                     resolve(JSON.parse(body));
             });
     }
