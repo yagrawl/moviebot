@@ -59,7 +59,7 @@ app.post('/webhook', (req, res) => {
       if (event.message.text) {
         sendSenderAction(sender, "mark_seen");
         sendSenderAction(sender, "typing_on");
-        handleTextMessage(sender, event.message);
+        setInterval(handleTextMessage(sender, event.message), 3000);
       } else if (event.message.attachments) {
         //handleAttachmentMessage(sender, event.message);
       }
