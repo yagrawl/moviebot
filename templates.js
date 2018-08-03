@@ -90,7 +90,15 @@ export let sendQuickButton = function (sender, text) {
               "content_type":"text",
               "title":"Next",
               "payload":"Next",
-            }
+          }, {
+              "content_type":"text",
+              "title":"Details",
+              "payload":"Details",
+          }, {
+              "content_type":"text",
+              "title":"See Poster",
+              "payload":"See Poster",
+          }
         ]
     };
 

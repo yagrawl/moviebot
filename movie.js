@@ -45,20 +45,6 @@ export let random = function (sender) {
                         "title": Movies.results[i].title,
                         "subtitle": Movies.results[i].release_date.slice(0,4),
                         "image_url": POSTER_BASE_URL + Movies.results[i].poster_path,
-                        "buttons":
-                            [{
-                                "type": "postback",
-                                "title": "Details",
-                                "payload": "Details"
-                                },{
-                                "type": "postback",
-                                "title": "See Poster",
-                                "payload": "See Poster"
-                                },{
-                                "type": "postback",
-                                "title": "Next",
-                                "payload": "Next"
-                            }]
                     }];
                 template.sendTemplate(sender, elements);
                 setTimeout(function() {
