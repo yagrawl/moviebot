@@ -19,17 +19,16 @@ export let postback = function(sender, postback) {
     senderAction(sender);
 };
 
-export let details = functions(sender) {
+export let details = function (sender) {
     senderAction(sender);
     try {
         template.sendMessage(sender, {text: movie.movieID});
     } catch {
         template.sendMessage(sender, {text: 'No Movie ID'});
     }
-
-}
+};
 
 let senderAction = function(sender) {
     template.sendSenderAction(sender, "mark_seen");
     template.sendSenderAction(sender, "typing_on");
-}
+};
