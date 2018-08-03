@@ -10,10 +10,10 @@ export let message = function(sender, message) {
         movie.details(sender);
     } else if(message === 'See Poster') {
         movie.poster(sender);
-    } else if(message === 'Next') {
+    } else if(message === 'Next' || message === 'Hi') {
         movie.random(sender);
     } else {
-        movie.random(sender);
+        template.sendMessage(sender, {text: "Try saying 'Hi' :) "})
     }
 };
 
