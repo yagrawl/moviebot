@@ -56,7 +56,7 @@ export let random = function (sender) {
                     "image_url": poster,
                 }];
 
-            template.sendTemplate(sender, elements);
+            template.sendTemplateGeneric(sender, elements);
             setTimeout(function() {
                 template.sendQuickButton(sender, overview);
             }, 3000);
@@ -64,22 +64,38 @@ export let random = function (sender) {
     });
 };
 
-// export let details = function (sender, id) {
-//     return new Promise((resolve, reject) => {
-//         request({
-//             method: 'GET',
-//             url: TMDB_BASE_URL + id + TMDB_API_KEY,
-//             headers: {
-//                 'Accept': 'application/json'
-//             }
-//         },
-//             function (error, response, body) {
-//                 if(response.statusCode != 200)
-//                 {
-//                     template.sendMessage(sender, {text: 'Sorry! 404 😲'});
-//                     reject(error);
-//                 } else {
-//                     resolve(JSON.parse(body));
-//                 }
-//     });
-// )};
+export let details = function (sender, id) {
+    request({
+        method: 'GET',
+        url: TMDB_BASE_URL + IDPop + TMDB_API_KEY,
+        headers: {
+            'Accept': 'application/json'
+        }
+    },
+        function (error, response, body) {
+            let Movie = JSON.parse(body);
+            if(response.statusCode != 200)
+            {
+                template.sendMessage(sender, {text: 'Sorry! 404 😲'});
+            }
+            else {
+                let title = Movie.title;
+                let id = Movie.id;
+                let tag = Movie.tagline;
+                let poster = POSTER_BASE_URL + Movie.poster_path;
+                let imdb = Movie.imdb_id;
+                message = [{
+                    "title": title,
+                    "subtitle": tag,
+                    "image_url": poster,
+                }, {
+                    "title": "random",
+                    "subtitle": "tag",
+                    "image_url": "http://i.imgur.com/Q05B72u.png",
+                }
+              ];
+
+                template.sendTemplateList(sender, message);
+            }
+        });
+}

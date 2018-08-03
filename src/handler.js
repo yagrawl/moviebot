@@ -7,8 +7,18 @@ import * as movie from './movie.js'
 
 export let message = function(sender, message) {
     senderAction(sender);
-    movie.random(sender);
-    details(sender);
+    switch(message) {
+        case "Details":
+            details(sender);
+            break;
+
+        case "See Poster":
+            break;
+
+        case "Next":
+        default:
+        movie.random(sender);
+    }
 };
 
 export let attachment = function(sender, attachment) {

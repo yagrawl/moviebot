@@ -52,12 +52,28 @@ export let sendImage = function (sender, url) {
 };
 
 //Generic function sending templates
-export let sendTemplate = function (sender, elements) {
+export let sendTemplateGeneric = function (sender, elements) {
     let message = {
         "attachment": {
             "type": "template",
             "payload": {
                 "template_type": "generic",
+                "elements": elements
+            }
+        }
+    };
+
+    sendMessage(sender, message);
+};
+
+//List function sending templates
+export let sendTemplateList = function (sender, elements) {
+    let message = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "list",
+                "top_element_type": "large",
                 "elements": elements
             }
         }
