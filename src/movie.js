@@ -84,7 +84,7 @@ export let details = function (sender, id) {
                 let tag = Movie.tagline;
                 let poster = POSTER_BASE_URL + Movie.poster_path;
                 let imdb = Movie.imdb_id;
-                message = [{
+                let elements = [{
                     "title": title,
                     "subtitle": tag,
                     "image_url": poster,
@@ -95,7 +95,7 @@ export let details = function (sender, id) {
                 }
               ];
 
-                template.sendTemplateList(sender, message);
+                template.sendTemplateList(sender, elements);
             }
         });
 }
