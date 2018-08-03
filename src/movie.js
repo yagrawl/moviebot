@@ -60,11 +60,6 @@ export let random = function (sender) {
             setTimeout(function() {
                 template.sendQuickButton(sender, overview);
             }, 3000);
-
-            detailsById
-                .then(movie => {
-                    handler.details(sender, movie);
-                });
         }
     });
 };
