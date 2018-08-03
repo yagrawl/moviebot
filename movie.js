@@ -35,9 +35,9 @@ export let random = function (sender) {
             else {
 
                 let i = Math.floor((Math.random() * 19) + 1);
-                IDPop = Movies.results[i].id.toString();
-                IDGlobal = IDPop;
-                Poster = PosterUrl + Movies.results[i].poster_path;
+                let IDPop = Movies.results[i].id.toString();
+                let IDGlobal = IDPop;
+                let Poster = POSTER_BASE_URL + Movies.results[i].poster_path;
                 console.log('Movie ID: ', IDPop);
                 console.log('Movie: ', Movies.results[i].title);
                 let elements = [{
