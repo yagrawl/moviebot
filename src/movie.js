@@ -87,7 +87,7 @@ export let details = function (sender) {
                 let tag = Movie.tagline;
                 let poster = POSTER_BASE_URL + Movie.poster_path;
                 let imdb = IMDB_BASE_URL + Movie.imdb_id;
-                let cast = cast(id);
+                let moviecast = cast(id);
 
                 let elements = [{
                         "title": title,
@@ -95,7 +95,7 @@ export let details = function (sender) {
                         "image_url": poster,
                     }];
 
-                cast.then(credits => {
+                moviecast.then(credits => {
                     let castNo = credits.cast.length;
                     if(castNo >= 3) { castNo = 3; }
 
