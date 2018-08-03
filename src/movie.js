@@ -73,22 +73,22 @@ export let random = function (sender) {
     });
 };
 
-export let details = function (sender, id) {
-    return new Promise((resolve, reject) => {
-        request({
-            method: 'GET',
-            url: TMDB_BASE_URL + id + TMDB_API_KEY,
-            headers: {
-                'Accept': 'application/json'
-            }
-        },
-            function (error, response, body) {
-                if(response.statusCode != 200)
-                {
-                    template.sendMessage(sender, {text: 'Sorry! 404 😲'});
-                    reject(error);
-                } else {
-                    resolve(JSON.parse(body));
-                }
-    });
-};
+// export let details = function (sender, id) {
+//     return new Promise((resolve, reject) => {
+//         request({
+//             method: 'GET',
+//             url: TMDB_BASE_URL + id + TMDB_API_KEY,
+//             headers: {
+//                 'Accept': 'application/json'
+//             }
+//         },
+//             function (error, response, body) {
+//                 if(response.statusCode != 200)
+//                 {
+//                     template.sendMessage(sender, {text: 'Sorry! 404 😲'});
+//                     reject(error);
+//                 } else {
+//                     resolve(JSON.parse(body));
+//                 }
+//     });
+// )};
