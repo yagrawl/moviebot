@@ -42,7 +42,7 @@ export let random = function (sender) {
                 let year = Movies.results[i].release_date.slice(0,4);
                 let poster = POSTER_BASE_URL + Movies.results[i].poster_path;
                 let overview = Movies.results[i].overview;
-            } catch {
+            } catch (error) {
                 template.sendMessage(sender, {text: 'Sorry! Unknown Error Occured 😲'});
             }
 

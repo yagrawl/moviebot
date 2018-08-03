@@ -23,7 +23,7 @@ export let details = function (sender) {
     senderAction(sender);
     try {
         template.sendMessage(sender, {text: movie.movieID});
-    } catch {
+    } catch (error) {
         template.sendMessage(sender, {text: 'No Movie ID'});
     }
 };
