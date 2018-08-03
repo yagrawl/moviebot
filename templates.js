@@ -39,7 +39,7 @@ export let sendMessage = function (sender, message) {
 
 //Generic function sending images
 export let sendImage = function (sender, url) {
-    message = {
+  let message = {
         "attachment": {
             "type": "image",
             "payload": {
@@ -47,12 +47,12 @@ export let sendImage = function (sender, url) {
                 }
             }
         };
-        sendMessage(sender, message);
+   sendMessage(sender, message);
 };
 
 //Generic function sending templates
 export let sendTemplate = function (sender, elements) {
-    message = {
+  let message = {
                 "attachment": {
                     "type": "template",
                     "payload": {
@@ -67,7 +67,7 @@ export let sendTemplate = function (sender, elements) {
 
 //Generic function sending buttons
 export let sendButton = function (sender, title, buttons) {
-    message = {
+  let message = {
                 "attachment": {
                     "type": "template",
                     "payload": {
@@ -82,7 +82,7 @@ export let sendButton = function (sender, title, buttons) {
 };
 
 export let sendQuickButton = function (sender) {
-  message = {
+  let message = {
               "quick_replies":[
                 {
                   "content_type":"text",
@@ -93,4 +93,4 @@ export let sendQuickButton = function (sender) {
           };
 
   sendMessage(sender, message);
-}
+};
