@@ -91,4 +91,4 @@ export let details = function (sender, id) {
                     resolve(JSON.parse(body));
                 }
     });
-}
+};
