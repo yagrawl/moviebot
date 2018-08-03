@@ -67,7 +67,7 @@ export let random = function (sender) {
 export let details = function (sender, id) {
     request({
         method: 'GET',
-        url: TMDB_BASE_URL + IDPop + TMDB_API_KEY,
+        url: TMDB_BASE_URL + id + TMDB_API_KEY,
         headers: {
             'Accept': 'application/json'
         }
