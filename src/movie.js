@@ -68,9 +68,6 @@ export let random = function (sender) {
             detailsById
                 .then(movie => {
                     handler.details(sender, movie);
-                })
-                .catch({
-                    template.sendMessage(sender, {text: 'Sorry! Unknown Error Occured 😲'});
                 });
         }
     });
