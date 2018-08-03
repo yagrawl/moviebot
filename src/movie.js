@@ -44,14 +44,15 @@ export let random = function (sender) {
                 let year = Movies.results[i].release_date.slice(0,4);
                 let poster = POSTER_BASE_URL + Movies.results[i].poster_path;
                 let overview = Movies.results[i].overview;
+
+                if(overview.indexOf('.') !== -1){
+                    overview = overview.slice(0, overview.indexOf('.') + 1);
+                } else {
+                    overview = overview.slice(0, 30);
+                }
+                
             } catch (error) {
                 template.sendMessage(sender, {text: 'Sorry! Unknown Error Occured 😲'});
-            }
-
-            if(overview.indexOf('.') !== -1){
-                overview = overview.slice(0, overview.indexOf('.') + 1);
-            } else {
-                overview = overview.slice(0, 30);
             }
 
             let elements = [{
