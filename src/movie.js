@@ -119,7 +119,7 @@ export let details = function (sender) {
                       {
                           "type": "web_url",
                           "url": imdb,
-                          "title": "IMDB"
+                          "title": "More Info"
                     }];
 
                 setTimeout(function() {
@@ -127,7 +127,7 @@ export let details = function (sender) {
                 }, 3000);
 
                 setTimeout(function() {
-                        template.sendQuickButtonNext(sender, "More?");
+                        template.sendQuickButtonNext(sender, "Next Movie?");
                 }, 4500);
             }
         });
@@ -150,6 +150,6 @@ export let cast = function(id) {
 export let poster = function(sender) {
     template.sendImage(sender, posterUrl);
     setTimeout(function() {
-            template.sendQuickButtonNext(sender, "More?");
+            template.sendQuickButtonNext(sender, "Next Movie?");
     }, 2500);
 }
