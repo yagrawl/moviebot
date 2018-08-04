@@ -72,7 +72,7 @@ export let search = function (sender, movieName) {
         headers: {
             'Accept': 'application/json'
         }
-    } function (error, response, body) {
+    }, function (error, response, body) {
         if(response.statusCode != 200) {
             template.sendMessage(sender, {text: 'Sorry! 404 😲'});
         } else {
