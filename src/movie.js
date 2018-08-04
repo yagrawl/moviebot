@@ -40,7 +40,6 @@ export let random = function (sender) {
 
             let i = Math.floor((Math.random() * 19) + 1);
             movieId = Movies.results[i].id.toString();
-            console.log(`Setting ID to ${movieId} @random`);
             let title = Movies.results[i].title;
             let year = Movies.results[i].release_date.slice(0,4);
             posterUrl = POSTER_BASE_URL + Movies.results[i].poster_path;
@@ -66,8 +65,58 @@ export let random = function (sender) {
     });
 };
 
+export let search = function (sender, movieName) {
+    request({
+        method: 'GET',
+        url: 'http://api.themoviedb.org/3/search/movie' + TMDB_API_KEY + '&query=' + movieName,
+        headers: {
+            'Accept': 'application/json'
+        }
+    } function (error, response, body) {
+        if(response.statusCode != 200) {
+            template.sendMessage(sender, {text: 'Sorry! 404 😲'});
+        } else {
+            let Movies = JSON.parse(body);
+            if(typeof Movies.results[0] !== 'undefined'){
+                let j = 0;
+                if(Movies.total_results >= 1 || Movies.results[0].title == Input) {
+                    if(Movies.total_results > 5) {
+                        for(let i = 0; i < 6; i++) {
+                            if(Movies.results[i].vote_average > Movies.results[j].vote_average) {
+                                j = i;
+                            }
+                        }
+                    }
+                }
+
+                movieId = Movies.results[j].id.toString();
+                posterUrl = POSTER_BASE_URL + Movies.results[j].poster_path;
+                let title = Movies.results[j].title;
+                let year = Movies.results[j].release_date.slice(0,4);
+                let overview = Movies.results[j].overview;
+
+                if(overview.indexOf('.') !== -1){
+                    overview = overview.slice(0, overview.indexOf('.') + 1);
+                } else {
+                    overview = overview.slice(0, 30);
+                }
+
+                let elements = [{
+                        "title": title,
+                        "subtitle": year,
+                        "image_url": posterUrl,
+                    }];
+
+                template.sendTemplateGeneric(sender, elements);
+                setTimeout(function() {
+                    template.sendQuickButton(sender, overview);
+                }, 1500);
+            }
+        }
+    });
+};
+
 export let details = function (sender) {
-    console.log(`Getting ID to ${movieId} @movie.details`);
     request({
         method: 'GET',
         url: TMDB_BASE_URL + movieId + TMDB_API_KEY,

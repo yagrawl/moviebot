@@ -12,7 +12,11 @@ export let message = function(sender, message) {
         movie.poster(sender);
     } else if(message === 'Next' || message === 'Hi') {
         movie.random(sender);
-    } else {
+    } else if(message.slice(0,6) === 'Search') {
+        let movieName = message.slice(7);
+        movie.search(sender, movieName);
+    }
+    else {
         template.sendMessage(sender, {text: "Try saying 'Hi' :) "})
     }
 };
