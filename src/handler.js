@@ -34,6 +34,8 @@ export let postback = function(sender, postback) {
     } else {
         movie.random(sender);
     }
+
+    return;
 };
 
 let senderAction = function(sender) {
